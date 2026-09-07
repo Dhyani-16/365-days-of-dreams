@@ -208,9 +208,9 @@ const surprises = {
         title: "The first little chapter",
         message: "Thirty days. That's our first little chapter done. And if you've made it this far, congratulations: you are now officially committed to opening a suspiciously sentimental website every day. 😭❤️",
         signature: "— see you in the next chapter"
-    }
+    },
 
-        31: {
+    31: {
         type: "question",
         title: "Day 31",
         message: "What's something completely random that you think I would immediately understand without you having to explain it?",
