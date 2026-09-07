@@ -3779,3 +3779,188 @@ window.addEventListener(
 
     }
 );
+
+// =========================
+// QUICK NAVIGATION
+// =========================
+
+const quickNavButton =
+    document.getElementById(
+        "quickNavButton"
+    );
+
+const quickNavMenu =
+    document.getElementById(
+        "quickNavMenu"
+    );
+
+const closeQuickNav =
+    document.getElementById(
+        "closeQuickNav"
+    );
+
+
+// OPEN MENU
+
+quickNavButton.addEventListener(
+    "click",
+    function () {
+
+        quickNavMenu.classList.toggle(
+            "active"
+        );
+
+    }
+);
+
+
+// CLOSE MENU
+
+closeQuickNav.addEventListener(
+    "click",
+    function () {
+
+        quickNavMenu.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+// NAVIGATION ITEMS
+
+document
+    .querySelectorAll(
+        ".quick-nav-item"
+    )
+    .forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const target =
+                        button.dataset.target;
+
+                    let targetElement;
+
+
+                    if (
+                        target === "today"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".today-surprise"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "days"
+                    ) {
+
+                        quickNavMenu.classList.remove(
+                            "active"
+                        );
+
+                        daysButton.click();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        target === "openWhen"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".open-when-section"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "museum"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".memory-museum-section"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "soundtrack"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".soundtrack-section"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "bucket"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".bucket-list-section"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "stats"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".year-stats-section"
+                            );
+
+                    }
+
+
+                    if (
+                        target === "backup"
+                    ) {
+
+                        targetElement =
+                            document.querySelector(
+                                ".backup-section"
+                            );
+
+                    }
+
+
+                    if (targetElement) {
+
+                        quickNavMenu.classList.remove(
+                            "active"
+                        );
+
+                        targetElement.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+                }
+            );
+
+        }
+    );
