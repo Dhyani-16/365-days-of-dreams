@@ -3693,16 +3693,7 @@ window.addEventListener(
                 "active"
             );
 
-            history.pushState(
-                {
-                    page: currentPage
-                },
-                "",
-                "#" + currentPage
-            );
-
             return;
-
         }
 
         if (
@@ -3715,16 +3706,7 @@ window.addEventListener(
                 "active"
             );
 
-            history.pushState(
-                {
-                    page: currentPage
-                },
-                "",
-                "#" + currentPage
-            );
-
             return;
-
         }
 
         if (
@@ -3737,16 +3719,7 @@ window.addEventListener(
                 "active"
             );
 
-            history.pushState(
-                {
-                    page: currentPage
-                },
-                "",
-                "#" + currentPage
-            );
-
             return;
-
         }
 
         if (
@@ -3759,143 +3732,12 @@ window.addEventListener(
                 "active"
             );
 
-            history.pushState(
-                {
-                    page: currentPage
-                },
-                "",
-                "#" + currentPage
-            );
-
             return;
-
         }
 
-        // =========================
-        // DAYS → HOME
-        // =========================
-
-        if (
-            currentPage === "days"
-        ) {
-
-            daysPage.classList.remove(
-                "active"
-            );
-
-            currentPage = "home";
-
-            return;
-
-        }
 
         // =========================
-        // HOME → LANDING
-        // =========================
-
-        if (
-            currentPage === "home"
-        ) {
-
-            secretHome.classList.remove(
-                "active"
-            );
-
-            document
-                .querySelector(".landing-page")
-                .classList.remove("hidden");
-
-            currentPage = "landing";
-
-            return;
-
-        }
-
-    }
-);
-
-// =========================
-// MOBILE / BROWSER BACK GESTURE
-// =========================
-
-window.addEventListener(
-    "popstate",
-    function () {
-
-        // =========================
-        // CLOSE SURPRISE MODAL FIRST
-        // =========================
-
-        if (
-            surpriseModal.classList.contains(
-                "active"
-            )
-        ) {
-
-            surpriseModal.classList.remove(
-                "active"
-            );
-
-            return;
-
-        }
-
-        // =========================
-        // CLOSE LETTER MODAL FIRST
-        // =========================
-
-        if (
-            letterModal.classList.contains(
-                "active"
-            )
-        ) {
-
-            letterModal.classList.remove(
-                "active"
-            );
-
-            return;
-
-        }
-
-        // =========================
-        // CLOSE SONG MODAL FIRST
-        // =========================
-
-        if (
-            songModal.classList.contains(
-                "active"
-            )
-        ) {
-
-            songModal.classList.remove(
-                "active"
-            );
-
-            return;
-
-        }
-
-        // =========================
-        // CLOSE BUCKET MODAL FIRST
-        // =========================
-
-        if (
-            bucketModal.classList.contains(
-                "active"
-            )
-        ) {
-
-            bucketModal.classList.remove(
-                "active"
-            );
-
-            return;
-
-        }
-
-        // =========================
-        // DAYS PAGE → SECRET HOME
+        // EXPLORE YEAR → HOME
         // =========================
 
         if (
@@ -3909,11 +3751,11 @@ window.addEventListener(
             );
 
             return;
-
         }
 
+
         // =========================
-        // SECRET HOME → LANDING
+        // HOME → LANDING
         // =========================
 
         if (
@@ -3928,10 +3770,11 @@ window.addEventListener(
 
             document
                 .querySelector(".landing-page")
-                .classList.remove("hidden");
+                .classList.remove(
+                    "hidden"
+                );
 
             return;
-
         }
 
     }
