@@ -934,6 +934,7 @@ dbRequest.onsuccess =
 
         loadMemoryMuseum();
         loadSoundtrack();
+        seedInitialBucketList();
         loadBucketList();
         updateFinaleStats();
         updateYearStatistics();
@@ -949,6 +950,110 @@ dbRequest.onerror =
         );
 
     };
+
+    // =========================
+// INITIAL BUCKET LIST ITEMS
+// =========================
+
+function seedInitialBucketList() {
+
+    if (!memoryDB) {
+        return;
+    }
+
+    const transaction =
+        memoryDB.transaction(
+            ["bucketList"],
+            "readwrite"
+        );
+
+    const store =
+        transaction.objectStore(
+            "bucketList"
+        );
+
+    const request =
+        store.count();
+
+    request.onsuccess =
+        function () {
+
+            // Only add the starter list
+            // if the bucket list is completely empty.
+
+            if (request.result > 0) {
+                return;
+            }
+
+            const initialItems = [
+
+                {
+                    text:
+                        "🏃‍♀️ Run a marathon together",
+                    completed:
+                        false,
+                    addedAt:
+                        new Date().toISOString()
+                },
+
+                {
+                    text:
+                        "🧘‍♀️ Go to Vipassana together",
+                    completed:
+                        false,
+                    addedAt:
+                        new Date().toISOString()
+                },
+
+                {
+                    text:
+                        "🏛️ Visit LBSNAA for training",
+                    completed:
+                        false,
+                    addedAt:
+                        new Date().toISOString()
+                },
+
+                {
+                    text:
+                        "🦩 Spend a day at Thol",
+                    completed:
+                        false,
+                    addedAt:
+                        new Date().toISOString()
+                },
+
+                {
+                    text:
+                        "☕ Try tiramisu at 5 famous cafés in Ahmedabad",
+                    completed:
+                        false,
+                    addedAt:
+                        new Date().toISOString()
+                }
+
+            ];
+
+            initialItems.forEach(
+                function (item) {
+
+                    store.add(item);
+
+                }
+            );
+
+            transaction.oncomplete =
+                function () {
+
+                    console.log(
+                        "Initial bucket list added 🪣❤️"
+                    );
+
+                };
+
+        };
+
+}
 
 // =========================
 // SAVE DAILY MEMORY
@@ -1616,19 +1721,17 @@ function loadSoundtrack() {
                                 ${song.artist}
                             </p>
 
-                            ${
-                                song.reason
-                                    ? `
+                            ${song.reason
+                            ? `
                                         <p class="song-reason-display">
                                             “${song.reason}”
                                         </p>
                                     `
-                                    : ""
-                            }
+                            : ""
+                        }
 
-                            ${
-                                song.link
-                                    ? `
+                            ${song.link
+                            ? `
                                         <a
                                             href="${song.link}"
                                             target="_blank"
@@ -1638,8 +1741,8 @@ function loadSoundtrack() {
                                             ▶ LISTEN
                                         </a>
                                     `
-                                    : ""
-                            }
+                            : ""
+                        }
 
                         </div>
 
@@ -2036,11 +2139,10 @@ function loadBucketList() {
                             data-id="${item.id}"
                             title="Mark as complete"
                         >
-                            ${
-                                item.completed
-                                    ? "✓"
-                                    : ""
-                            }
+                            ${item.completed
+                            ? "✓"
+                            : ""
+                        }
                         </button>
 
                         <span class="bucket-item-text">
@@ -3325,10 +3427,10 @@ function createStarField() {
 
         star.textContent =
             starSymbols[
-                Math.floor(
-                    Math.random() *
-                    starSymbols.length
-                )
+            Math.floor(
+                Math.random() *
+                starSymbols.length
+            )
             ];
 
         star.style.left =
@@ -3433,10 +3535,10 @@ function createHomeStarField() {
 
         star.textContent =
             starSymbols[
-                Math.floor(
-                    Math.random() *
-                    starSymbols.length
-                )
+            Math.floor(
+                Math.random() *
+                starSymbols.length
+            )
             ];
 
         star.style.left =
