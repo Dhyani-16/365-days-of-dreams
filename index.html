@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>365 Days of Sapna</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     LANDING PAGE
+     ========================= -->
+
+<main class="landing-page">
+
+    <div class="stars"></div>
+
+    <section class="intro">
+
+        <p class="small-text">
+            A little something for you
+        </p>
+
+        <h2>
+            SAPNA'S
+        </h2>
+
+        <h1>
+            365
+        </h1>
+
+        <h2>
+            DAYS
+        </h2>
+
+        <p class="subtitle">
+            365 little moments.<br>
+            <!-- 365 little surprises.<br> -->
+            One very special year.
+        </p>
+
+        <button id="enterButton">
+            ✨ ENTER ✨
+        </button>
+
+        <p class="secret-text">
+            Some things are better discovered slowly.
+        </p>
+
+        <footer class="site-footer">
+
+            <p>
+                © 365 Days of Sapna
+            </p>
+
+            <p class="footer-credit">
+                Made by Dhyani <br>
+                With love, memories & a little extra effort. ✨
+            </p>
+
+        </footer>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     SECRET HOME
+     ========================= -->
+
+<section id="secretHome" class="secret-home">
+
+    <div class="home-stars"></div>
+
+    <div class="home-content">
+
+        <!-- WELCOME -->
+
+        <p class="welcome-small">
+            Welcome to your little corner of the internet
+        </p>
+
+        <h1>
+            This is<br>
+            <span>ours.</span>
+        </h1>
+
+        <p class="welcome-message">
+            I could have given you something that lasts a day.
+            <br>
+            Instead, I wanted to give you a whole year.
+        </p>
+
+        <div class="home-line"></div>
+
+
+
+        <!-- =========================
+             YEAR PROGRESS
+             ========================= -->
+
+        <div class="progress-section">
+
+            <p class="progress-label">
+                OUR YEAR
+            </p>
+
+            <div class="progress-number">
+
+                <span id="unlockedCount">
+                    1
+                </span>
+
+                <span class="progress-total">
+                    / 365
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+            <p class="progress-text">
+                little moments unlocked
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             TODAY'S SURPRISE
+             ========================= -->
+
+        <div class="today-surprise">
+
+            <p class="today-label">
+                ✦ TODAY'S LITTLE SURPRISE ✦
+            </p>
+
+            <div class="today-day">
+                DAY <span id="todayDay">1</span>
+            </div>
+
+            <div class="today-icon">
+                🎁
+            </div>
+
+            <h2 id="todayTitle">
+                Something is waiting for you...
+            </h2>
+
+            <p id="todayDescription">
+                A tiny surprise for today. 💌
+            </p>
+
+            <button id="todayButton" class="today-button">
+                OPEN TODAY'S SURPRISE ✨
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             EXPLORE YEAR
+             ========================= -->
+
+        <button id="daysButton" class="days-button">
+            📅 EXPLORE YEAR
+        </button>
+
+
+
+        <!-- =========================
+             OPEN WHEN
+             ========================= -->
+
+        <section class="open-when-section">
+
+            <p class="section-label">
+                ✦ A FEW LETTERS FOR YOU ✦
+            </p>
+
+            <h2>
+                Open When...
+            </h2>
+
+            <p class="section-intro">
+                For the days when you need a little something.
+            </p>
+
+            <div class="letters-grid">
+
+
+                <button class="letter-card" data-letter="sad">
+
+                    <span class="letter-icon">
+                        💌
+                    </span>
+
+                    <span class="letter-title">
+                        You're feeling sad
+                    </span>
+
+                    <span class="letter-hint">
+                        open me gently
+                    </span>
+
+                </button>
+
+
+
+                <button class="letter-card" data-letter="happy">
+
+                    <span class="letter-icon">
+                        🌷
+                    </span>
+
+                    <span class="letter-title">
+                        You're really happy
+                    </span>
+
+                    <span class="letter-hint">
+                        save some of it for me
+                    </span>
+
+                </button>
+
+
+
+                <button class="letter-card" data-letter="angry">
+
+                    <span class="letter-icon">
+                        🌙
+                    </span>
+
+                    <span class="letter-title">
+                        You're angry
+                    </span>
+
+                    <span class="letter-hint">
+                        read this after you breathe
+                    </span>
+
+                </button>
+
+
+
+                <button class="letter-card" data-letter="missing">
+
+                    <span class="letter-icon">
+                        🫶
+                    </span>
+
+                    <span class="letter-title">
+                        You miss me
+                    </span>
+
+                    <span class="letter-hint">
+                        just a little reminder
+                    </span>
+
+                </button>
+
+
+
+                <button class="letter-card" data-letter="celebrating">
+
+                    <span class="letter-icon">
+                        🥂
+                    </span>
+
+                    <span class="letter-title">
+                        You have something to celebrate
+                    </span>
+
+                    <span class="letter-hint">
+                        this deserves a smile
+                    </span>
+
+                </button>
+
+
+
+                <button class="letter-card" data-letter="reminder">
+
+                    <span class="letter-icon">
+                        ✨
+                    </span>
+
+                    <span class="letter-title">
+                        You need a reminder
+                    </span>
+
+                    <span class="letter-hint">
+                        of how wonderful you are
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             MEMORY MUSEUM
+             ========================= -->
+
+        <section class="memory-museum-section">
+
+            <p class="section-label">
+                ✦ OUR LITTLE ARCHIVE ✦
+            </p>
+
+            <h2>
+                Memory Museum
+            </h2>
+
+            <div class="museum-search">
+
+                <span class="museum-search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="memorySearch"
+                    placeholder="Search our memories..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="clearMemorySearch"
+                    class="clear-memory-search"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <p class="section-intro">
+                A collection of little moments you decided to keep.
+            </p>
+
+
+            <div id="memoryMuseum" class="memory-museum">
+
+                <div class="empty-museum">
+
+                    <div class="empty-museum-icon">
+                        🏛️
+                    </div>
+
+                    <h3>
+                        Nothing here yet...
+                    </h3>
+
+                    <p>
+                        Your little memories will slowly find their way here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             OUR SOUNDTRACK
+             ========================= -->
+
+        <section class="soundtrack-section">
+
+            <p class="section-label">
+                ✦ THE SOUNDTRACK OF US ✦
+            </p>
+
+            <h2>
+                Our Soundtrack
+            </h2>
+
+            <p class="section-intro">
+                I didn't want to choose songs for us.
+                I wanted to see which ones you would choose.
+            </p>
+
+
+            <div class="soundtrack-note">
+
+                <div class="soundtrack-icon">
+                    🎧
+                </div>
+
+                <p>
+                    Add a song whenever you find one that
+                    reminds you of a moment, a mood, a day,
+                    or absolutely nothing at all. 😂
+                </p>
+
+            </div>
+
+
+            <button id="addSongButton" class="add-song-button">
+                ＋ ADD A SONG
+            </button>
+
+
+            <div id="soundtrackList" class="soundtrack-list">
+
+                <div class="empty-soundtrack">
+
+                    <div class="empty-soundtrack-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        Our first song is waiting...
+                    </h3>
+
+                    <p>
+                        Maybe you'll find it today.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             OUR LITTLE BUCKET LIST
+             ========================= -->
+
+        <section class="bucket-list-section">
+
+            <p class="section-label">
+                ✦ THINGS WE SHOULD DO SOMEDAY ✦
+            </p>
+
+            <h2>
+                Our Little Bucket List
+            </h2>
+
+            <p class="section-intro">
+                Some plans are better when neither person
+                knows exactly when they'll happen.
+            </p>
+
+
+            <div class="bucket-card">
+
+                <div class="bucket-icon">
+                    🪣
+                </div>
+
+                <h3>
+                    OUR BUCKET LIST
+                </h3>
+
+                <p class="bucket-intro">
+                    What should we do together before
+                    this year ends?
+                </p>
+
+
+                <div class="bucket-progress">
+
+                    <span id="bucketProgressText">
+                        0 / 0 completed
+                    </span>
+
+                    <div class="bucket-progress-bar">
+
+                        <div
+                            id="bucketProgressFill"
+                            class="bucket-progress-fill"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="addBucketItem"
+                    class="add-bucket-button"
+                >
+                    ＋ ADD SOMETHING
+                </button>
+
+            </div>
+
+
+
+            <div id="bucketList" class="bucket-list">
+
+                <div class="empty-bucket">
+
+                    <div class="empty-bucket-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        Nothing on the list yet...
+                    </h3>
+
+                    <p>
+                        Maybe your first adventure is
+                        waiting to be added.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             YEAR STATISTICS
+             ========================= -->
+
+        <section class="year-stats-section">
+
+            <p class="section-label">
+                ✦ OUR YEAR IN NUMBERS ✦
+            </p>
+
+            <h2>
+                Little Things We Collected
+            </h2>
+
+            <p class="section-intro">
+                Somehow, all these little moments
+                became a whole year.
+            </p>
+
+
+            <div class="stats-grid">
+
+                <!-- DAYS UNLOCKED -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📅
+                    </div>
+
+                    <span
+                        id="statsDaysUnlocked"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        DAYS UNLOCKED
+                    </p>
+
+                </div>
+
+
+                <!-- MEMORIES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💌
+                    </div>
+
+                    <span
+                        id="statsMemories"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        MEMORIES MADE
+                    </p>
+
+                </div>
+
+
+                <!-- PHOTOS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📸
+                    </div>
+
+                    <span
+                        id="statsPhotos"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        PHOTOS COLLECTED
+                    </p>
+
+                </div>
+
+
+                <!-- SONGS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🎵
+                    </div>
+
+                    <span
+                        id="statsSongs"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        SONGS ADDED
+                    </p>
+
+                </div>
+
+
+                <!-- COMPLETED PLANS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🪣
+                    </div>
+
+                    <span
+                        id="statsPlansCompleted"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        PLANS COMPLETED
+                    </p>
+
+                </div>
+
+
+                <!-- PLANS WAITING -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✨
+                    </div>
+
+                    <span
+                        id="statsPlansWaiting"
+                        class="stat-number"
+                    >
+                        0
+                    </span>
+
+                    <p class="stat-label">
+                        PLANS WAITING
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- YEAR PROGRESS -->
+
+            <div class="year-progress-card">
+
+                <div class="year-progress-heading">
+
+                    <span>
+                        OUR YEAR
+                    </span>
+
+                    <span id="statsYearProgress">
+                        0 / 365
+                    </span>
+
+                </div>
+
+                <div class="year-progress-track">
+
+                    <div
+                        id="statsYearProgressFill"
+                        class="year-progress-fill"
+                    ></div>
+
+                </div>
+
+                <p>
+                    One little day at a time. ✨
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BACKUP & RESTORE
+             ========================= -->
+
+        <section class="backup-section">
+
+            <p class="section-label">
+                ✦ KEEP OUR YEAR SAFE ✦
+            </p>
+
+            <h2>
+                Our Little Time Capsule
+            </h2>
+
+            <p class="section-intro">
+                This little corner lives in your browser,
+                so you can save a copy of everything we've
+                collected here.
+            </p>
+
+            <div class="backup-card">
+
+                <div class="backup-icon">
+                    💾
+                </div>
+
+                <h3>
+                    SAVE OUR YEAR
+                </h3>
+
+                <p class="backup-description">
+                    Keep a backup of your memories, photos,
+                    songs and bucket-list plans.
+                </p>
+
+                <button
+                    id="backupButton"
+                    class="backup-button"
+                >
+                    💾 BACK UP OUR YEAR
+                </button>
+
+                <button
+                    id="restoreButton"
+                    class="restore-button"
+                >
+                    ↩ RESTORE A BACKUP
+                </button>
+
+                <input
+                    type="file"
+                    id="restoreFile"
+                    accept=".json"
+                    hidden
+                >
+
+                <p
+                    id="backupStatus"
+                    class="backup-status"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DAY 365 FINALE
+             ========================= -->
+
+        <section
+            id="finaleSection"
+            class="finale-section"
+        >
+
+            <div class="finale-card">
+
+
+                <p class="section-label">
+                    ✦ THE LAST PAGE ✦
+                </p>
+
+
+                <div class="finale-icon">
+                    🎉
+                </div>
+
+
+                <p class="finale-day">
+                    DAY 365
+                </p>
+
+
+                <h2>
+                    You made it<br>
+                    through the whole year.
+                </h2>
+
+
+                <div class="finale-line"></div>
+
+
+                <p class="finale-message">
+
+                    365 days ago, this little corner
+                    of the internet was just an idea.
+
+                    <br><br>
+
+                    And somehow, it became a whole year
+                    of tiny surprises, random thoughts,
+                    memories, songs, plans and moments.
+
+                    <br><br>
+
+                    Thank you for being here for all of it. ❤️
+
+                </p>
+
+
+
+                <div class="finale-stats">
+
+
+                    <div class="finale-stat">
+
+                        <span id="finaleMemories">
+                            0
+                        </span>
+
+                        <small>
+                            MEMORIES
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="finale-stat">
+
+                        <span id="finaleSongs">
+                            0
+                        </span>
+
+                        <small>
+                            SONGS
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="finale-stat">
+
+                        <span id="finaleBucket">
+                            0
+                        </span>
+
+                        <small>
+                            PLANS COMPLETED
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <button
+                    id="replayYearButton"
+                    class="replay-year-button"
+                >
+                    ↺ REPLAY OUR YEAR
+                </button>
+
+
+
+                <p class="finale-footer">
+
+                    Some years are measured in days.<br>
+
+                    This one will be measured in memories. ✨
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             COPYRIGHT
+             ========================= -->
+
+        <footer class="site-footer">
+
+            <p>
+                © 365 Days of Sapna
+            </p>
+
+            <p class="footer-credit">
+                Made by Dhyani <br>
+                With love, memories & a little extra effort. ✨
+            </p>
+
+        </footer>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- =========================
+     365 DAYS CALENDAR
+     ========================= -->
+
+<section id="daysPage" class="days-page">
+
+    <div class="days-header">
+
+        <p class="welcome-small">
+            OUR YEAR
+        </p>
+
+        <h2>
+            365 DAYS OF US
+        </h2>
+
+        <p>
+            One little surprise at a time.
+        </p>
+
+
+        <div class="calendar-progress">
+
+            <span id="calendarCount">
+                1
+            </span>
+
+            <span>
+                / 365 unlocked
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div id="monthsContainer"></div>
+
+
+    <button
+        id="backButton"
+        class="back-button"
+    >
+        ← BACK
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     DAILY SURPRISE MODAL
+     ========================= -->
+
+<div
+    id="surpriseModal"
+    class="surprise-modal"
+>
+
+    <div class="surprise-card">
+
+
+        <button
+            id="closeSurprise"
+            class="close-surprise"
+        >
+            ×
+        </button>
+
+
+        <div class="surprise-progress">
+
+            <p class="surprise-day">
+                ✦ DAY <span id="surpriseDay">1</span> OF 365 ✦
+            </p>
+
+            <div class="surprise-progress-track">
+
+                <div
+                    id="surpriseProgressFill"
+                    class="surprise-progress-fill"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="envelope-icon">
+            💌
+        </div>
+
+
+        <h2 id="surpriseTitle">
+            A little note for you
+        </h2>
+
+
+        <div class="surprise-line"></div>
+
+
+        <p
+            id="surpriseMessage"
+            class="surprise-message"
+        >
+            This is where your first message will appear.
+        </p>
+
+
+        <p class="surprise-signature">
+            — from someone who is very glad you're here
+        </p>
+
+
+        <div class="day-navigation">
+
+            <button
+                id="previousDay"
+                class="day-nav-button"
+            >
+                ← PREVIOUS
+            </button>
+
+            <span id="navigationDay">
+                DAY 1
+            </span>
+
+            <button
+                id="nextDay"
+                class="day-nav-button"
+            >
+                NEXT →
+            </button>
+
+        </div>
+
+
+
+        <!-- DAILY MEMORY RESPONSE -->
+
+        <div class="memory-response">
+
+            <div class="response-divider"></div>
+
+
+            <p class="response-label">
+                ✦ YOUR TURN ✦
+            </p>
+
+
+            <h3>
+                What do you want to remember about today?
+            </h3>
+
+
+            <textarea
+                id="dailyResponse"
+                placeholder="Write something for future-you... 💭"
+                maxlength="1000"
+            ></textarea>
+
+
+            <label
+                for="dailyPhoto"
+                class="photo-upload"
+            >
+                📸 ADD A PHOTO
+            </label>
+
+
+            <input
+                type="file"
+                id="dailyPhoto"
+                accept="image/*"
+                hidden
+            >
+
+
+            <p
+                id="photoName"
+                class="photo-name"
+            ></p>
+
+
+            <img
+                id="dailyPhotoPreview"
+                class="daily-photo-preview"
+                alt="Selected memory photo"
+            >
+
+
+            <button
+                id="removePhoto"
+                class="remove-photo-button"
+            >
+                ✕ REMOVE PHOTO
+            </button>
+
+
+            <button
+                id="saveMemory"
+                class="save-memory-button"
+            >
+                SAVE THIS MEMORY ✨
+            </button>
+
+
+            <p
+                id="memorySaved"
+                class="memory-saved"
+            >
+                ✓ Memory saved
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     OPEN WHEN MODAL
+     ========================= -->
+
+<div
+    id="letterModal"
+    class="letter-modal"
+>
+
+    <div class="letter-paper">
+
+
+        <button
+            id="closeLetter"
+            class="close-letter"
+        >
+            ×
+        </button>
+
+
+        <p class="letter-small">
+            OPEN WHEN...
+        </p>
+
+
+        <div class="letter-envelope">
+            💌
+        </div>
+
+
+        <h2 id="letterTitle">
+            You're feeling sad
+        </h2>
+
+
+        <div class="letter-divider"></div>
+
+
+        <p
+            id="letterMessage"
+            class="letter-message"
+        >
+            Your letter will appear here.
+        </p>
+
+
+        <p class="letter-signature">
+            — always, in one way or another
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     ADD SONG MODAL
+     ========================= -->
+
+<div
+    id="songModal"
+    class="song-modal"
+>
+
+    <div class="song-card">
+
+
+        <button
+            id="closeSongModal"
+            class="close-song"
+        >
+            ×
+        </button>
+
+
+        <p class="song-small">
+            ✦ ADD TO OUR SOUNDTRACK ✦
+        </p>
+
+
+        <div class="song-big-icon">
+            🎵
+        </div>
+
+
+        <h2>
+            A song for us
+        </h2>
+
+
+        <p class="song-form-intro">
+            Add a song whenever you feel like it.
+        </p>
+
+
+        <input
+            type="text"
+            id="songTitle"
+            class="song-input"
+            placeholder="Song title"
+            maxlength="100"
+        >
+
+
+        <input
+            type="text"
+            id="songArtist"
+            class="song-input"
+            placeholder="Artist"
+            maxlength="100"
+        >
+
+
+        <input
+            type="url"
+            id="songLink"
+            class="song-input"
+            placeholder="Spotify / YouTube link (optional)"
+        >
+
+
+        <textarea
+            id="songReason"
+            class="song-reason"
+            placeholder="Why did you add this song? 💭"
+            maxlength="500"
+        ></textarea>
+
+
+        <button
+            id="saveSong"
+            class="save-song-button"
+        >
+            ADD TO OUR SOUNDTRACK ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     BUCKET LIST MODAL
+     ========================= -->
+
+<div
+    id="bucketModal"
+    class="bucket-modal"
+>
+
+    <div class="bucket-form-card">
+
+
+        <button
+            id="closeBucketModal"
+            class="close-bucket"
+        >
+            ×
+        </button>
+
+
+        <p class="bucket-small">
+            ✦ ADD TO OUR BUCKET LIST ✦
+        </p>
+
+
+        <div class="bucket-big-icon">
+            🪣
+        </div>
+
+
+        <h2>
+            Something we should do
+        </h2>
+
+
+        <p class="bucket-form-intro">
+            What is one thing you'd love
+            for us to do together?
+        </p>
+
+
+        <textarea
+            id="bucketItemInput"
+            class="bucket-item-input"
+            placeholder="Write your idea here... ✨"
+            maxlength="200"
+        ></textarea>
+
+
+        <button
+            id="saveBucketItem"
+            class="save-bucket-button"
+        >
+            ADD TO OUR LIST ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+     ========================= -->
+
+<script src="data/surprises.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
