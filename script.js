@@ -128,6 +128,14 @@ enterButton.addEventListener("click", function () {
         .querySelector(".landing-page")
         .classList.add("hidden");
 
+    currentPage = "home";
+
+    history.pushState(
+        { page: "home" },
+        "",
+        "#home"
+    );
+
 });
 
 // =========================
@@ -989,7 +997,7 @@ function seedInitialBucketList() {
 
                 {
                     text:
-                        "🏃‍♀️ Run a marathon together",
+                        "🏃‍♀️ Run a marathon",
                     completed:
                         false,
                     addedAt:
@@ -998,7 +1006,7 @@ function seedInitialBucketList() {
 
                 {
                     text:
-                        "🧘‍♀️ Go to Vipassana together",
+                        "🧘‍♀️ Go to Vipassana",
                     completed:
                         false,
                     addedAt:
@@ -3593,3 +3601,338 @@ function createHomeStarField() {
 }
 
 createHomeStarField();
+
+
+// =========================
+// MOBILE / BROWSER BACK GESTURE
+// =========================
+
+let currentPage = "landing";
+
+// =========================
+// ENTER SECRET HOME
+// =========================
+
+// =========================
+// ENTER SECRET HOME
+// =========================
+
+enterButton.addEventListener(
+    "click",
+    function () {
+
+        secretHome.classList.add(
+            "active"
+        );
+
+        document
+            .querySelector(".landing-page")
+            .classList.add("hidden");
+
+        history.pushState(
+            {
+                page: "home"
+            },
+            "",
+            "#home"
+        );
+
+    }
+);
+
+// =========================
+// OPEN 365 DAYS
+// =========================
+
+// =========================
+// ENTER SECRET HOME
+// =========================
+
+enterButton.addEventListener(
+    "click",
+    function () {
+
+        secretHome.classList.add(
+            "active"
+        );
+
+        document
+            .querySelector(".landing-page")
+            .classList.add("hidden");
+
+        history.pushState(
+            {
+                page: "home"
+            },
+            "",
+            "#home"
+        );
+
+    }
+);
+
+// =========================
+// BROWSER / MOBILE BACK
+// =========================
+
+window.addEventListener(
+    "popstate",
+    function () {
+
+        // =========================
+        // CLOSE OPEN MODALS FIRST
+        // =========================
+
+        if (
+            surpriseModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            surpriseModal.classList.remove(
+                "active"
+            );
+
+            history.pushState(
+                {
+                    page: currentPage
+                },
+                "",
+                "#" + currentPage
+            );
+
+            return;
+
+        }
+
+        if (
+            letterModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            letterModal.classList.remove(
+                "active"
+            );
+
+            history.pushState(
+                {
+                    page: currentPage
+                },
+                "",
+                "#" + currentPage
+            );
+
+            return;
+
+        }
+
+        if (
+            songModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            songModal.classList.remove(
+                "active"
+            );
+
+            history.pushState(
+                {
+                    page: currentPage
+                },
+                "",
+                "#" + currentPage
+            );
+
+            return;
+
+        }
+
+        if (
+            bucketModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            bucketModal.classList.remove(
+                "active"
+            );
+
+            history.pushState(
+                {
+                    page: currentPage
+                },
+                "",
+                "#" + currentPage
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // DAYS → HOME
+        // =========================
+
+        if (
+            currentPage === "days"
+        ) {
+
+            daysPage.classList.remove(
+                "active"
+            );
+
+            currentPage = "home";
+
+            return;
+
+        }
+
+        // =========================
+        // HOME → LANDING
+        // =========================
+
+        if (
+            currentPage === "home"
+        ) {
+
+            secretHome.classList.remove(
+                "active"
+            );
+
+            document
+                .querySelector(".landing-page")
+                .classList.remove("hidden");
+
+            currentPage = "landing";
+
+            return;
+
+        }
+
+    }
+);
+
+// =========================
+// MOBILE / BROWSER BACK GESTURE
+// =========================
+
+window.addEventListener(
+    "popstate",
+    function () {
+
+        // =========================
+        // CLOSE SURPRISE MODAL FIRST
+        // =========================
+
+        if (
+            surpriseModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            surpriseModal.classList.remove(
+                "active"
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // CLOSE LETTER MODAL FIRST
+        // =========================
+
+        if (
+            letterModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            letterModal.classList.remove(
+                "active"
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // CLOSE SONG MODAL FIRST
+        // =========================
+
+        if (
+            songModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            songModal.classList.remove(
+                "active"
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // CLOSE BUCKET MODAL FIRST
+        // =========================
+
+        if (
+            bucketModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            bucketModal.classList.remove(
+                "active"
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // DAYS PAGE → SECRET HOME
+        // =========================
+
+        if (
+            daysPage.classList.contains(
+                "active"
+            )
+        ) {
+
+            daysPage.classList.remove(
+                "active"
+            );
+
+            return;
+
+        }
+
+        // =========================
+        // SECRET HOME → LANDING
+        // =========================
+
+        if (
+            secretHome.classList.contains(
+                "active"
+            )
+        ) {
+
+            secretHome.classList.remove(
+                "active"
+            );
+
+            document
+                .querySelector(".landing-page")
+                .classList.remove("hidden");
+
+            return;
+
+        }
+
+    }
+);
