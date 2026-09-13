@@ -3,20 +3,20 @@ const surprises = {
     1: {
         type: "text",
         title: "The beginning",
-        message: "Happiest Birthday, Sapna! So... this is Day 1. There are 364 more little doors after this one, which is honestly a slightly ridiculous amount of effort for a website. But I wanted you to have a place where random thoughts, memories, questions and tiny surprises could slowly collect. So here we are. ❤️",
+        message: "Happiest Birthday, Sapna! So... this is Day 1. There are 364 more little doors after this one. This might feel like a slightly ridiculous amount of effort for a website, but I wanted you to have a place where random thoughts, memories, questions and tiny surprises could slowly collect. So here we are. ❤️",
         signature: "— from someone who is very glad you're here"
     },
 
     2: {
         type: "text",
         title: "A tiny reminder",
-        message: "Some people enter your life quietly and somehow end up becoming a really important part of it. Funny how that happens.",
+        message: "Some people enter your life quietly and somehow end up becoming a really important part of it. Funny how that happens, but glad that you're that person in my life.",
         signature: "— just something I wanted you to know"
     },
 
     3: {
         type: "question",
-        title: "Today's thought",
+        title: "Today's random question",
         message: "If you could teleport anywhere right now, with absolutely no planning, where would we go?",
         signature: "— today's very important investigation 💭"
     },
@@ -52,7 +52,7 @@ const surprises = {
     8: {
         type: "challenge",
         title: "Tiny mission",
-        message: "Today, listen to one song you haven't heard in ages. Don't skip it halfway through. Let it take you somewhere for three minutes.",
+        message: "Today, listen to one song you haven't heard in ages. Don't skip it halfway through. Let it take you somewhere for a few minutes.",
         signature: "— your soundtrack assignment 🎵"
     },
 
@@ -80,7 +80,7 @@ const surprises = {
     12: {
         type: "challenge",
         title: "Do this today",
-        message: "Buy yourself or eat something you genuinely love today. No guilt, no 'I'll have it later'. Consider it an official order from this website. 😌",
+        message: "Call someone you haven't talked to since a long time and just have a pointless conversation for no reason. 😌",
         signature: "— doctor-approved by absolutely nobody"
     },
 
@@ -101,7 +101,7 @@ const surprises = {
     15: {
         type: "challenge",
         title: "Make yourself laugh",
-        message: "Find the most ridiculous photo in your gallery today. The one that makes absolutely no sense. Keep it. Some photos deserve to survive purely because they're stupid. 😂",
+        message: "Find the most ridiculous photo in your gallery today. The one that makes absolutely no sense. Upload it. Some photos deserve to survive purely because they're stupid. 😂",
         signature: "— preserving important historical evidence"
     },
 
@@ -200,7 +200,7 @@ const surprises = {
         type: "question",
         title: "Let's make a list",
         message: "What's one thing you've always wanted us to do together but we've somehow never actually done?",
-        signature: "— adding this to the mental bucket list 🪣"
+        signature: "— adding this to the mental bucket list 🪣 (also add it to the bucket list section)"
     },
 
     30: {
@@ -235,7 +235,7 @@ const surprises = {
         type: "question",
         title: "Choose our chaos",
         message: "If we suddenly had ₹10,000 to spend together today, what ridiculous thing would we spend it on?",
-        signature: "— budgeting skills not required"
+        signature: "— budgeting (CSAT) skills not required"
     },
 
     35: {

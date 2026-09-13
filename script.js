@@ -460,7 +460,7 @@ function getUnlockedDays() {
         new Date("2026-09-17");
 
     const today =
-        new Date();
+        new Date("2027-09-17");
 
     const differenceInTime =
         today - startDate;
@@ -485,6 +485,10 @@ function getUnlockedDays() {
 // OPEN SURPRISE
 // =========================
 
+// =========================
+// OPEN SURPRISE
+// =========================
+
 function openSurprise(dayNumber) {
 
     console.log(
@@ -498,6 +502,88 @@ function openSurprise(dayNumber) {
     updateDayNavigation(
         dayNumber
     );
+
+
+    // =========================
+    // RESET MEMORY EDIT STATE
+    // =========================
+
+    existingMemoryPhoto = null;
+    existingMemoryPhotoName = "";
+    existingVoiceNote = null;
+
+    photoRemoved = false;
+    voiceRemoved = false;
+
+    recordedVoiceBlob = null;
+
+
+    // =========================
+    // RESET TEXT
+    // =========================
+
+    dailyResponse.value = "";
+
+
+    // =========================
+    // RESET PHOTO UI
+    // =========================
+
+    dailyPhoto.value = "";
+
+    photoName.textContent = "";
+
+    dailyPhotoPreview.src = "";
+
+    dailyPhotoPreview.classList.remove(
+        "show"
+    );
+
+    removePhoto.classList.remove(
+        "show"
+    );
+
+
+    // =========================
+    // RESET VOICE UI
+    // =========================
+
+    voicePreview.pause();
+
+    voicePreview.removeAttribute(
+        "src"
+    );
+
+    voicePreview.load();
+
+    voicePreview.hidden = true;
+
+    removeVoice.hidden = true;
+
+    recordVoice.hidden = false;
+
+    stopVoice.hidden = true;
+
+    recordingStatus.hidden = true;
+
+    clearInterval(
+        recordingTimerInterval
+    );
+
+    recordingSeconds = 0;
+
+    recordingTimer.textContent =
+        "00:00";
+
+
+    // IMPORTANT:
+    // Opening a saved memory should NOT
+    // display "Memory saved".
+
+    memorySaved.classList.remove(
+        "show"
+    );
+
 
     // =========================
     // LOAD SAVED MEMORY
@@ -515,7 +601,10 @@ function openSurprise(dayNumber) {
         );
 
     const request =
-        store.get(dayNumber);
+        store.get(
+            dayNumber
+        );
+
 
     request.onsuccess =
         function () {
@@ -523,87 +612,97 @@ function openSurprise(dayNumber) {
             const memory =
                 request.result;
 
-            if (memory) {
 
-                dailyResponse.value =
-                    memory.text || "";
+            if (!memory) {
+                return;
+            }
 
-                if (memory.photoName) {
+
+            // =========================
+            // LOAD TEXT
+            // =========================
+
+            dailyResponse.value =
+                memory.text || "";
+
+
+            // =========================
+            // LOAD PHOTO
+            // =========================
+
+            if (memory.photo) {
+
+                existingMemoryPhoto =
+                    memory.photo;
+
+                existingMemoryPhotoName =
+                    memory.photoName || "";
+
+
+                const photoURL =
+                    URL.createObjectURL(
+                        memory.photo
+                    );
+
+                dailyPhotoPreview.src =
+                    photoURL;
+
+                dailyPhotoPreview.classList.add(
+                    "show"
+                );
+
+                removePhoto.classList.add(
+                    "show"
+                );
+
+
+                if (
+                    memory.photoName
+                ) {
 
                     photoName.textContent =
                         "📎 " +
                         memory.photoName;
 
-                } else {
-
-                    photoName.textContent =
-                        "";
-
                 }
 
-                if (memory.photo) {
+            }
 
-                    const photoURL =
-                        URL.createObjectURL(
-                            memory.photo
-                        );
 
-                    dailyPhotoPreview.src =
-                        photoURL;
+            // =========================
+            // LOAD VOICE NOTE
+            // =========================
 
-                    dailyPhotoPreview.classList.add(
-                        "show"
+            if (memory.voiceNote) {
+
+                existingVoiceNote =
+                    memory.voiceNote;
+
+
+                const voiceURL =
+                    URL.createObjectURL(
+                        memory.voiceNote
                     );
 
-                    removePhoto.classList.add(
-                        "show"
-                    );
+                voicePreview.src =
+                    voiceURL;
 
-                } else {
+                voicePreview.hidden =
+                    false;
 
-                    dailyPhotoPreview.src =
-                        "";
+                removeVoice.hidden =
+                    false;
 
-                    dailyPhotoPreview.classList.remove(
-                        "show"
-                    );
 
-                    removePhoto.classList.remove(
-                        "show"
-                    );
-
-                }
-
-                memorySaved.classList.add(
-                    "show"
-                );
-
-            } else {
-
-                dailyResponse.value =
-                    "";
-
-                photoName.textContent =
-                    "";
-
-                dailyPhotoPreview.src =
-                    "";
-
-                dailyPhotoPreview.classList.remove(
-                    "show"
-                );
-
-                removePhoto.classList.remove(
-                    "show"
-                );
-
-                memorySaved.classList.remove(
-                    "show"
+                console.log(
+                    "Saved voice note loaded for Day " +
+                    dayNumber
                 );
 
             }
 
         };
+
 
     // =========================
     // LOAD SURPRISE
@@ -611,6 +710,7 @@ function openSurprise(dayNumber) {
 
     const surprise =
         surprises[dayNumber];
+
 
     if (!surprise) {
 
@@ -636,6 +736,11 @@ function openSurprise(dayNumber) {
             "— from someone who is very glad you're here";
 
     }
+
+
+    // =========================
+    // SHOW MODAL
+    // =========================
 
     surpriseModal.classList.add(
         "active"
@@ -818,11 +923,18 @@ dailyPhoto.addEventListener(
             const file =
                 dailyPhoto.files[0];
 
+            // A new photo has been selected,
+            // so it should replace the old photo.
+            photoRemoved = false;
+
             photoName.textContent =
-                "📎 " + file.name;
+                "📎 " +
+                file.name;
+
 
             const reader =
                 new FileReader();
+
 
             reader.onload =
                 function (event) {
@@ -840,22 +952,9 @@ dailyPhoto.addEventListener(
 
                 };
 
-            reader.readAsDataURL(file);
 
-        } else {
-
-            photoName.textContent =
-                "";
-
-            dailyPhotoPreview.src =
-                "";
-
-            dailyPhotoPreview.classList.remove(
-                "show"
-            );
-
-            removePhoto.classList.remove(
-                "show"
+            reader.readAsDataURL(
+                file
             );
 
         }
@@ -869,10 +968,24 @@ dailyPhoto.addEventListener(
 
 let memoryDB;
 
+// =========================
+// MEMORY EDIT STATE
+// =========================
+
+let existingMemoryPhoto = null;
+let existingMemoryPhotoName = "";
+
+let existingVoiceNote = null;
+
+let photoRemoved = false;
+let voiceRemoved = false;
+
+// let recordedVoiceBlob = null;
+
 const dbRequest =
     indexedDB.open(
         "365DaysOfUsDB",
-        4
+        6
     );
 
 dbRequest.onupgradeneeded =
@@ -928,6 +1041,21 @@ dbRequest.onupgradeneeded =
 
         }
 
+        if (
+            !db.objectStoreNames.contains(
+                "autoBackup"
+            )
+        ) {
+
+            db.createObjectStore(
+                "autoBackup",
+                {
+                    keyPath: "id"
+                }
+            );
+
+        }
+
     };
 
 dbRequest.onsuccess =
@@ -948,6 +1076,19 @@ dbRequest.onsuccess =
         updateYearStatistics();
         setupFinaleUnlock();
 
+        // =========================
+        // AUTOMATIC BACKUP
+        // =========================
+
+        createAutomaticBackup();
+
+        setInterval(
+            function () {
+                createAutomaticBackup();
+            },
+            5 * 60 * 1000
+        );
+
     };
 
 dbRequest.onerror =
@@ -959,7 +1100,7 @@ dbRequest.onerror =
 
     };
 
-    // =========================
+// =========================
 // INITIAL BUCKET LIST ITEMS
 // =========================
 
@@ -1074,92 +1215,283 @@ saveMemory.addEventListener(
         const text =
             dailyResponse.value.trim();
 
-        if (
-            !text &&
-            dailyPhoto.files.length === 0
-        ) {
-
-            dailyResponse.focus();
-
-            return;
-
-        }
-
         const currentDay =
             Number(
                 surpriseDay.textContent
             );
 
-        const transaction =
+
+        // =========================
+        // CHECK EXISTING MEMORY
+        // =========================
+
+        const checkTransaction =
             memoryDB.transaction(
                 ["memories"],
-                "readwrite"
+                "readonly"
             );
 
-        const store =
-            transaction.objectStore(
+        const checkStore =
+            checkTransaction.objectStore(
                 "memories"
             );
 
-        const memory = {
+        const checkRequest =
+            checkStore.get(
+                currentDay
+            );
 
-            day: currentDay,
 
-            text: text,
-
-            photoName:
-                dailyPhoto.files.length > 0
-                    ? dailyPhoto.files[0].name
-                    : "",
-
-            photo:
-                dailyPhoto.files.length > 0
-                    ? dailyPhoto.files[0]
-                    : null,
-
-            savedAt:
-                new Date().toISOString()
-
-        };
-
-        const request =
-            store.put(memory);
-
-        request.onsuccess =
+        checkRequest.onsuccess =
             function () {
 
-                console.log(
-                    "Memory successfully stored for Day " +
-                    currentDay
-                );
+                const existingMemory =
+                    checkRequest.result;
 
-            };
 
-        request.onerror =
-            function () {
+                const hasNewPhoto =
+                    dailyPhoto.files.length > 0;
 
-                console.error(
-                    "Could not store memory:",
-                    request.error
-                );
 
-            };
+                // =========================
+                // DETERMINE FINAL PHOTO
+                // =========================
 
-        transaction.oncomplete =
-            function () {
+                let finalPhoto = null;
 
-                memorySaved.classList.add(
-                    "show"
-                );
+                let finalPhotoName = "";
 
-                console.log(
-                    "Memory saved for Day " +
-                    currentDay
-                );
 
-                loadMemoryMuseum();
-                updateYearStatistics();
-                updateFinaleStats();
+                if (hasNewPhoto) {
+
+                    // New photo selected:
+                    // replace the old photo.
+
+                    finalPhoto =
+                        dailyPhoto.files[0];
+
+                    finalPhotoName =
+                        dailyPhoto.files[0].name;
+
+                } else if (
+                    existingMemory &&
+                    existingMemory.photo &&
+                    !photoRemoved
+                ) {
+
+                    // No new photo and user did
+                    // not remove the old one:
+                    // keep the existing photo.
+
+                    finalPhoto =
+                        existingMemory.photo;
+
+                    finalPhotoName =
+                        existingMemory.photoName ||
+                        "";
+
+                }
+
+
+                // =========================
+                // DETERMINE FINAL VOICE NOTE
+                // =========================
+
+                let finalVoiceNote = null;
+
+
+                if (recordedVoiceBlob) {
+
+                    // New recording:
+                    // replace the old voice note.
+
+                    finalVoiceNote =
+                        recordedVoiceBlob;
+
+                } else if (
+                    existingMemory &&
+                    existingMemory.voiceNote &&
+                    !voiceRemoved
+                ) {
+
+                    // No new recording and user did
+                    // not remove the old one:
+                    // keep the existing voice note.
+
+                    finalVoiceNote =
+                        existingMemory.voiceNote;
+
+                }
+
+
+                // =========================
+                // CHECK IF MEMORY IS EMPTY
+                // =========================
+
+                if (
+                    !existingMemory &&
+                    !text &&
+                    !finalPhoto &&
+                    !finalVoiceNote
+                ) {
+
+                    dailyResponse.focus();
+
+                    return;
+                }
+
+
+                // =========================
+                // SAVE MEMORY
+                // =========================
+
+                const transaction =
+                    memoryDB.transaction(
+                        ["memories"],
+                        "readwrite"
+                    );
+
+                const store =
+                    transaction.objectStore(
+                        "memories"
+                    );
+
+
+                const memory = {
+
+                    day:
+                        currentDay,
+
+                    // Empty text is intentional.
+                    // This allows old text to be deleted.
+
+                    text:
+                        text,
+
+                    photoName:
+                        finalPhotoName,
+
+                    photo:
+                        finalPhoto,
+
+                    voiceNote:
+                        finalVoiceNote,
+
+                    savedAt:
+                        new Date()
+                            .toISOString()
+                };
+
+
+                const request =
+                    store.put(
+                        memory
+                    );
+
+
+                request.onsuccess =
+                    function () {
+
+                        console.log(
+                            "Memory successfully stored for Day " +
+                            currentDay
+                        );
+
+                    };
+
+
+                request.onerror =
+                    function () {
+
+                        console.error(
+                            "Could not store memory:",
+                            request.error
+                        );
+
+                    };
+
+
+                // =========================
+                // AFTER SAVE
+                // =========================
+
+                transaction.oncomplete =
+                    function () {
+
+                        // Update current editing state
+                        // so the next save knows what
+                        // currently exists.
+
+                        existingMemoryPhoto =
+                            finalPhoto;
+
+                        existingMemoryPhotoName =
+                            finalPhotoName;
+
+                        existingVoiceNote =
+                            finalVoiceNote;
+
+
+                        // Reset deletion flags
+
+                        photoRemoved =
+                            false;
+
+                        voiceRemoved =
+                            false;
+
+
+                        // New recording has now
+                        // been saved.
+
+                        recordedVoiceBlob =
+                            null;
+
+
+                        // Clear selected file input
+
+                        dailyPhoto.value =
+                            "";
+
+
+                        // =========================
+                        // SAVE CONFIRMATION
+                        // =========================
+
+                        memorySaved.textContent =
+                            existingMemory
+                                ? "✓ Memory updated just now"
+                                : "✓ Memory saved just now";
+
+
+                        memorySaved.classList.add(
+                            "show"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                memorySaved.classList.remove(
+                                    "show"
+                                );
+
+                            },
+                            2500
+                        );
+
+
+                        // =========================
+                        // REFRESH MUSEUM + STATS
+                        // =========================
+
+                        loadMemoryMuseum();
+                        updateYearStatistics();
+                        updateFinaleStats();
+
+                        createAutomaticBackup();
+
+                    };
 
             };
 
@@ -1170,82 +1502,556 @@ saveMemory.addEventListener(
 // REMOVE PHOTO
 // =========================
 
-removePhoto.addEventListener(
-    "click",
-    function () {
+// removePhoto.addEventListener(
+//     "click",
+//     function () {
 
-        const currentDay =
-            Number(
-                surpriseDay.textContent
+//         // Do NOT modify IndexedDB yet.
+//         // Just mark the photo for deletion.
+//         photoRemoved = true;
+
+//         // Clear newly selected photo
+//         dailyPhoto.value = "";
+
+//         // Clear the preview
+//         dailyPhotoPreview.src = "";
+
+//         dailyPhotoPreview.classList.remove(
+//             "show"
+//         );
+
+//         removePhoto.classList.remove(
+//             "show"
+//         );
+
+//         photoName.textContent = "";
+
+//         console.log(
+//             "Photo marked for removal. Save memory to confirm."
+//         );
+
+//     }
+// );
+
+// =========================
+// AUTOMATIC LOCAL BACKUP
+// =========================
+
+function createAutomaticBackup() {
+
+    if (window.isRestoringBackup) {
+        return;
+    }
+
+    if (!memoryDB) {
+        return;
+    }
+
+
+    const transaction =
+        memoryDB.transaction(
+            [
+                "memories",
+                "songs",
+                "bucketList",
+                "autoBackup"
+            ],
+            "readwrite"
+        );
+
+
+    const memoriesStore =
+        transaction.objectStore(
+            "memories"
+        );
+
+    const songsStore =
+        transaction.objectStore(
+            "songs"
+        );
+
+    const bucketStore =
+        transaction.objectStore(
+            "bucketList"
+        );
+
+    const backupStore =
+        transaction.objectStore(
+            "autoBackup"
+        );
+
+
+    const memoriesRequest =
+        memoriesStore.getAll();
+
+    const songsRequest =
+        songsStore.getAll();
+
+    const bucketRequest =
+        bucketStore.getAll();
+
+
+    Promise.all([
+
+        new Promise(function (resolve) {
+
+            memoriesRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        memoriesRequest.result
+                    );
+
+                };
+
+        }),
+
+        new Promise(function (resolve) {
+
+            songsRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        songsRequest.result
+                    );
+
+                };
+
+        }),
+
+        new Promise(function (resolve) {
+
+            bucketRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        bucketRequest.result
+                    );
+
+                };
+
+        })
+
+    ]).then(
+        function (results) {
+
+            const backup = {
+
+                id:
+                    "latest",
+
+                savedAt:
+                    new Date().toISOString(),
+
+                memories:
+                    results[0],
+
+                songs:
+                    results[1],
+
+                bucketList:
+                    results[2]
+
+            };
+
+
+            backupStore.put(
+                backup
             );
 
-        dailyPhoto.value =
-            "";
 
-        dailyPhotoPreview.src =
-            "";
+            transaction.oncomplete =
+                function () {
 
-        dailyPhotoPreview.classList.remove(
-            "show"
+                    console.log(
+                        "Automatic local backup created.",
+                        backup.savedAt
+                    );
+
+                };
+
+        }
+    ).catch(
+        function (error) {
+
+            console.error(
+                "Automatic backup failed:",
+                error
+            );
+
+        }
+    );
+
+}
+
+// =========================
+// SAFETY BACKUP BEFORE RESTORE
+// =========================
+
+function createSafetyBackupBeforeRestore(
+    onComplete
+) {
+
+    if (!memoryDB) {
+        return;
+    }
+
+
+    const transaction =
+        memoryDB.transaction(
+            [
+                "memories",
+                "songs",
+                "bucketList",
+                "autoBackup"
+            ],
+            "readwrite"
         );
 
-        removePhoto.classList.remove(
-            "show"
+
+    const memoriesStore =
+        transaction.objectStore(
+            "memories"
         );
 
-        photoName.textContent =
-            "";
+    const songsStore =
+        transaction.objectStore(
+            "songs"
+        );
 
-        const transaction =
+    const bucketStore =
+        transaction.objectStore(
+            "bucketList"
+        );
+
+    const backupStore =
+        transaction.objectStore(
+            "autoBackup"
+        );
+
+
+    const memoriesRequest =
+        memoriesStore.getAll();
+
+    const songsRequest =
+        songsStore.getAll();
+
+    const bucketRequest =
+        bucketStore.getAll();
+
+
+    Promise.all([
+
+        new Promise(function (resolve) {
+
+            memoriesRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        memoriesRequest.result
+                    );
+
+                };
+
+        }),
+
+        new Promise(function (resolve) {
+
+            songsRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        songsRequest.result
+                    );
+
+                };
+
+        }),
+
+        new Promise(function (resolve) {
+
+            bucketRequest.onsuccess =
+                function () {
+
+                    resolve(
+                        bucketRequest.result
+                    );
+
+                };
+
+        })
+
+    ]).then(
+        function (results) {
+
+            const safetyBackup = {
+
+                id:
+                    "beforeRestore",
+
+                savedAt:
+                    new Date().toISOString(),
+
+                memories:
+                    results[0],
+
+                songs:
+                    results[1],
+
+                bucketList:
+                    results[2]
+
+            };
+
+
+            backupStore.put(
+                safetyBackup
+            );
+
+
+            transaction.oncomplete =
+                function () {
+
+                    console.log(
+                        "Safety backup created before restore."
+                    );
+
+
+                    if (
+                        typeof onComplete ===
+                        "function"
+                    ) {
+
+                        onComplete();
+
+                    }
+
+                };
+
+        }
+    ).catch(
+        function (error) {
+
+            console.error(
+                "Could not create safety backup:",
+                error
+            );
+
+        }
+    );
+
+}
+
+// =========================
+// RESTORE AUTOMATIC BACKUP
+// =========================
+
+// =========================
+// RESTORE AUTOMATIC BACKUP
+// =========================
+
+function restoreAutomaticBackup() {
+
+    window.isRestoringBackup = true;
+
+    if (!memoryDB) {
+        window.isRestoringBackup = false;
+        return;
+    }
+}
+
+
+// =========================
+// READ LATEST BACKUP
+// =========================
+
+const readTransaction =
+    memoryDB.transaction(
+        ["autoBackup"],
+        "readonly"
+    );
+
+const backupStore =
+    readTransaction.objectStore(
+        "autoBackup"
+    );
+
+const request =
+    backupStore.get("latest");
+
+
+request.onsuccess =
+    function () {
+
+        const backup =
+            request.result;
+
+
+        if (!backup) {
+
+            console.warn(
+                "No automatic backup found."
+            );
+
+            backupStatus.textContent =
+                "⚠️ No local backup was found.";
+
+            backupStatus.classList.add(
+                "show"
+            );
+
+            return;
+        }
+
+
+        // =========================
+        // RESTORE TRANSACTION
+        // =========================
+
+        const restoreTransaction =
             memoryDB.transaction(
-                ["memories"],
+                [
+                    "memories",
+                    "songs",
+                    "bucketList"
+                ],
                 "readwrite"
             );
 
-        const store =
-            transaction.objectStore(
+
+        const memoriesStore =
+            restoreTransaction.objectStore(
                 "memories"
             );
 
-        const request =
-            store.get(currentDay);
+        const songsStore =
+            restoreTransaction.objectStore(
+                "songs"
+            );
 
-        request.onsuccess =
+        const bucketStore =
+            restoreTransaction.objectStore(
+                "bucketList"
+            );
+
+
+        // =========================
+        // CLEAR CURRENT DATA
+        // =========================
+
+        memoriesStore.clear();
+        songsStore.clear();
+        bucketStore.clear();
+
+
+        // =========================
+        // RESTORE MEMORIES
+        // =========================
+
+        backup.memories.forEach(
+            function (memory) {
+
+                memoriesStore.put(
+                    memory
+                );
+
+            }
+        );
+
+
+        // =========================
+        // RESTORE SONGS
+        // =========================
+
+        backup.songs.forEach(
+            function (song) {
+
+                songsStore.put(
+                    song
+                );
+
+            }
+        );
+
+
+        // =========================
+        // RESTORE BUCKET LIST
+        // =========================
+
+        backup.bucketList.forEach(
+            function (item) {
+
+                bucketStore.put(
+                    item
+                );
+
+            }
+        );
+
+
+        // =========================
+        // RESTORE COMPLETE
+        // =========================
+
+        restoreTransaction.oncomplete =
             function () {
 
-                const memory =
-                    request.result;
-
-                if (!memory) {
-                    return;
-                }
-
-                memory.photo =
-                    null;
-
-                memory.photoName =
-                    "";
-
-                store.put(memory);
-
                 console.log(
-                    "Photo removed from Day " +
-                    currentDay
+                    "Automatic backup restored successfully."
+                );
+
+
+                backupStatus.textContent =
+                    "✓ Our local backup has been restored successfully. ❤️";
+
+                backupStatus.classList.add(
+                    "show"
+                );
+
+
+                loadMemoryMuseum();
+                loadSoundtrack();
+                loadBucketList();
+
+                updateYearStatistics();
+                updateFinaleStats();
+
+                window.isRestoringBackup = false;
+            };
+
+
+        restoreTransaction.onerror =
+            function () {
+
+                window.isRestoringBackup = false;
+
+                console.error(
+                    "Could not restore automatic backup:",
+                    restoreTransaction.error
+                );
+
+
+                backupStatus.textContent =
+                    "⚠️ Something went wrong while restoring the backup.";
+
+                backupStatus.classList.add(
+                    "show"
                 );
 
             };
 
-        transaction.oncomplete =
-            function () {
+    };
 
-                loadMemoryMuseum();
-                updateYearStatistics();
-                updateFinaleStats();
 
-            };
+request.onerror =
+    function () {
 
-    }
-);
+        console.error(
+            "Could not read automatic backup:",
+            request.error
+        );
+
+    };
 
 // =========================
 // MEMORY MUSEUM
@@ -2841,6 +3647,11 @@ const restoreButton =
         "restoreButton"
     );
 
+const restoreLocalBackupButton =
+    document.getElementById(
+        "restoreLocalBackupButton"
+    );
+
 const restoreFile =
     document.getElementById(
         "restoreFile"
@@ -3964,3 +4775,501 @@ document
 
         }
     );
+
+// =========================
+// VOICE NOTE RECORDING
+// =========================
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recordedVoiceBlob = null;
+let recordingTimerInterval = null;
+let recordingSeconds = 0;
+
+const recordVoice =
+    document.getElementById("recordVoice");
+
+const stopVoice =
+    document.getElementById("stopVoice");
+
+const recordingStatus =
+    document.getElementById("recordingStatus");
+
+const recordingTimer =
+    document.getElementById("recordingTimer");
+
+const voicePreview =
+    document.getElementById("voicePreview");
+
+const removeVoice =
+    document.getElementById("removeVoice");
+
+
+// =========================
+// START RECORDING
+// =========================
+
+recordVoice.addEventListener(
+    "click",
+    async function () {
+
+        try {
+
+            const stream =
+                await navigator.mediaDevices
+                    .getUserMedia({
+                        audio: true
+                    });
+
+
+            audioChunks = [];
+
+            recordedVoiceBlob = null;
+
+
+            mediaRecorder =
+                new MediaRecorder(
+                    stream
+                );
+
+
+            mediaRecorder.ondataavailable =
+                function (event) {
+
+                    if (
+                        event.data.size > 0
+                    ) {
+
+                        audioChunks.push(
+                            event.data
+                        );
+
+                    }
+
+                };
+
+
+            mediaRecorder.onstop =
+                function () {
+
+                    recordedVoiceBlob =
+                        new Blob(
+                            audioChunks,
+                            {
+                                type:
+                                    mediaRecorder.mimeType ||
+                                    "audio/webm"
+                            }
+                        );
+
+
+                    const audioURL =
+                        URL.createObjectURL(
+                            recordedVoiceBlob
+                        );
+
+
+                    voicePreview.src =
+                        audioURL;
+
+                    voicePreview.hidden =
+                        false;
+
+
+                    removeVoice.hidden =
+                        false;
+
+
+                    recordingStatus.hidden =
+                        true;
+
+
+                    recordVoice.hidden =
+                        false;
+
+                    stopVoice.hidden =
+                        true;
+
+
+                    clearInterval(
+                        recordingTimerInterval
+                    );
+
+
+                    stream
+                        .getTracks()
+                        .forEach(
+                            function (track) {
+                                track.stop();
+                            }
+                        );
+
+
+                    console.log(
+                        "Voice note recorded."
+                    );
+
+                };
+
+
+            // =========================
+            // START
+            // =========================
+
+            mediaRecorder.start();
+
+
+            recordingSeconds = 0;
+
+            recordingTimer.textContent =
+                "00:00";
+
+
+            recordingStatus.hidden =
+                false;
+
+            recordVoice.hidden =
+                true;
+
+            stopVoice.hidden =
+                false;
+
+
+            recordingTimerInterval =
+                setInterval(
+                    function () {
+
+                        recordingSeconds++;
+
+
+                        const minutes =
+                            Math.floor(
+                                recordingSeconds / 60
+                            );
+
+                        const seconds =
+                            recordingSeconds % 60;
+
+
+                        recordingTimer.textContent =
+                            String(minutes)
+                                .padStart(2, "0")
+                            + ":" +
+                            String(seconds)
+                                .padStart(2, "0");
+
+                    },
+                    1000
+                );
+
+
+        } catch (error) {
+
+            console.error(
+                "Microphone access failed:",
+                error
+            );
+
+
+            alert(
+                "Microphone access is needed to record a voice note."
+            );
+
+        }
+
+    }
+);
+
+
+// =========================
+// STOP RECORDING
+// =========================
+
+stopVoice.addEventListener(
+    "click",
+    function () {
+
+        if (
+            mediaRecorder &&
+            mediaRecorder.state !== "inactive"
+        ) {
+
+            mediaRecorder.stop();
+
+        }
+
+    }
+);
+
+
+// =========================
+// REMOVE VOICE NOTE
+// =========================
+
+// removeVoice.addEventListener(
+//     "click",
+//     function () {
+
+//         // Do NOT immediately change IndexedDB.
+//         // Mark the voice note for deletion.
+//         voiceRemoved = true;
+
+//         recordedVoiceBlob = null;
+
+
+//         voicePreview.pause();
+
+//         voicePreview.removeAttribute(
+//             "src"
+//         );
+
+//         voicePreview.load();
+
+//         voicePreview.hidden =
+//             true;
+
+
+//         removeVoice.hidden =
+//             true;
+
+
+//         recordVoice.hidden =
+//             false;
+
+
+//         console.log(
+//             "Voice note marked for removal. Save memory to confirm."
+//         );
+
+//     }
+// );
+
+// =========================
+// DELETE CONFIRMATION
+// =========================
+
+const deleteConfirmModal =
+    document.getElementById(
+        "deleteConfirmModal"
+    );
+
+const deleteConfirmTitle =
+    document.getElementById(
+        "deleteConfirmTitle"
+    );
+
+const deleteConfirmMessage =
+    document.getElementById(
+        "deleteConfirmMessage"
+    );
+
+const cancelDelete =
+    document.getElementById(
+        "cancelDelete"
+    );
+
+const confirmDelete =
+    document.getElementById(
+        "confirmDelete"
+    );
+
+let deleteTarget = null;
+
+// =========================
+// LOCAL BACKUP RESTORE
+// =========================
+
+restoreLocalBackupButton.addEventListener(
+    "click",
+    function () {
+
+        restoreConfirmModal.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+cancelRestore.addEventListener(
+    "click",
+    function () {
+
+        restoreConfirmModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+confirmRestore.addEventListener(
+    "click",
+    function () {
+
+        restoreConfirmModal.classList.remove(
+            "active"
+        );
+
+
+        createSafetyBackupBeforeRestore(
+            function () {
+
+                restoreAutomaticBackup();
+
+            }
+        );
+
+    }
+);
+
+// =========================
+// REQUEST PHOTO REMOVAL
+// =========================
+
+removePhoto.addEventListener(
+    "click",
+    function () {
+
+        deleteTarget =
+            "photo";
+
+        deleteConfirmTitle.textContent =
+            "Remove this photo?";
+
+        deleteConfirmMessage.textContent =
+            "The photo will be removed when you save this memory.";
+
+        deleteConfirmModal.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+// =========================
+// REQUEST VOICE REMOVAL
+// =========================
+
+removeVoice.addEventListener(
+    "click",
+    function () {
+
+        deleteTarget =
+            "voice";
+
+        deleteConfirmTitle.textContent =
+            "Remove this voice note?";
+
+        deleteConfirmMessage.textContent =
+            "The voice note will be removed when you save this memory.";
+
+        deleteConfirmModal.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+// =========================
+// CANCEL DELETE
+// =========================
+
+cancelDelete.addEventListener(
+    "click",
+    function () {
+
+        deleteTarget =
+            null;
+
+        deleteConfirmModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+// =========================
+// CONFIRM DELETE
+// =========================
+
+confirmDelete.addEventListener(
+    "click",
+    function () {
+
+        if (
+            deleteTarget ===
+            "photo"
+        ) {
+
+            photoRemoved =
+                true;
+
+            dailyPhoto.value =
+                "";
+
+            dailyPhotoPreview.src =
+                "";
+
+            dailyPhotoPreview.classList.remove(
+                "show"
+            );
+
+            removePhoto.classList.remove(
+                "show"
+            );
+
+            photoName.textContent =
+                "";
+
+        }
+
+
+        if (
+            deleteTarget ===
+            "voice"
+        ) {
+
+            voiceRemoved =
+                true;
+
+            recordedVoiceBlob =
+                null;
+
+            voicePreview.pause();
+
+            voicePreview.removeAttribute(
+                "src"
+            );
+
+            voicePreview.load();
+
+            voicePreview.hidden =
+                true;
+
+            removeVoice.hidden =
+                true;
+
+            recordVoice.hidden =
+                false;
+
+        }
+
+
+        deleteTarget =
+            null;
+
+        deleteConfirmModal.classList.remove(
+            "active"
+        );
+
+
+        console.log(
+            "Memory item marked for removal. Save memory to confirm."
+        );
+
+    }
+);
