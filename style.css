@@ -1633,7 +1633,7 @@ button:hover {
    DAILY MEMORY RESPONSE
 ========================= */
 
-/* .memory-response {
+.memory-response {
     margin-top: 35px;
     padding-top: 5px;
 }
@@ -1663,13 +1663,13 @@ button:hover {
     margin: 0 auto 18px;
 
     color: rgba(255, 255, 255, 0.9);
-} */
+}
 
 
 /* =========================
    RESPONSE TEXTAREA
 ========================= */
-/* 
+
 #dailyResponse {
     width: 100%;
     min-height: 110px;
@@ -1706,81 +1706,6 @@ button:hover {
     background: rgba(255, 255, 255, 0.09);
 
     box-shadow: 0 0 20px rgba(170, 150, 255, 0.08);
-} */
-
-/* =========================
-   DAILY MEMORY JOURNAL
-   ========================= */
-
-.memory-response {
-    margin-top: 35px;
-    padding-top: 5px;
-}
-
-.response-divider {
-    width: 45px;
-    height: 1px;
-    margin: 0 auto 22px;
-    background: rgba(255, 255, 255, 0.22);
-}
-
-.response-label {
-    font-family: Arial, sans-serif;
-    font-size: 8px;
-    letter-spacing: 4px;
-    opacity: 0.45;
-    margin-bottom: 10px;
-}
-
-.memory-response h3 {
-    font-family: Georgia, serif;
-    font-size: 17px;
-    font-weight: normal;
-    line-height: 1.5;
-    margin: 0 auto 16px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-
-/* =========================
-   TEXT AREA
-   ========================= */
-
-#dailyResponse {
-    width: 100%;
-    min-height: 95px;
-    padding: 14px 16px;
-    box-sizing: border-box;
-
-    resize: vertical;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 15px;
-
-    background: rgba(255, 255, 255, 0.045);
-    color: rgba(255, 255, 255, 0.9);
-
-    font-family: Georgia, serif;
-    font-size: 14px;
-    line-height: 1.6;
-
-    outline: none;
-
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-#dailyResponse::placeholder {
-    color: rgba(255, 255, 255, 0.35);
-}
-
-#dailyResponse:focus {
-    border-color: rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.065);
-    box-shadow:
-        0 0 0 3px rgba(255, 255, 255, 0.025);
 }
 
 
@@ -1789,173 +1714,36 @@ button:hover {
 ========================= */
 
 .photo-upload {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
 
-    min-height: 40px;
-    padding: 0 15px;
+    margin-top: 15px;
+    padding: 11px 18px;
 
-    margin-top: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
 
-    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.05);
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.8);
 
     font-family: Arial, sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 1.5px;
 
     cursor: pointer;
 
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .photo-upload:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    transform: translateY(-2px);
 }
-
-/* =========================
-   VOICE NOTE
-   ========================= */
-
-.voice-note-section {
-    margin-top: 14px;
-    padding: 14px;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
-
-    background: rgba(255, 255, 255, 0.025);
-}
-
-.memory-option-label {
-    margin: 0 0 9px;
-
-    font-family: Arial, sans-serif;
-    font-size: 8px;
-    letter-spacing: 2.5px;
-
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.voice-controls {
-    display: flex;
-    justify-content: center;
-}
-
-.voice-button {
-    min-height: 38px;
-    padding: 0 15px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    color: rgba(255, 255, 255, 0.7);
-
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 1.2px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.voice-button:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.stop-voice-button {
-    background: rgba(255, 255, 255, 0.07);
-}
-
-.recording-status {
-    margin-top: 10px;
-
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 1px;
-
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.voice-preview {
-    width: 100%;
-    height: 38px;
-
-    margin-top: 10px;
-
-    border-radius: 20px;
-}
-
-.remove-voice-button,
-.remove-photo-button {
-    margin: 8px auto 0;
-
-    padding: 5px 9px;
-
-    border: none;
-    background: transparent;
-
-    color: rgba(255, 255, 255, 0.35);
-
-    font-family: Arial, sans-serif;
-    font-size: 8px;
-    letter-spacing: 1px;
-
-    cursor: pointer;
-}
-
-.remove-voice-button[hidden],
-.remove-photo-button[hidden] {
-    display: none;
-}
-
-.remove-voice-button:hover,
-.remove-photo-button:hover {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.remove-photo-button.show {
-    display: block;
-}
-
-
-/* =========================
-   PHOTO NAME
-   ========================= */
 
 .photo-name {
-    margin: 6px 0 0;
-
-    font-family: Arial, sans-serif;
-    font-size: 8px;
-
-    color: rgba(255, 255, 255, 0.4);
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-/* .photo-name {
     min-height: 18px;
 
     margin: 8px 0 0;
@@ -1964,7 +1752,7 @@ button:hover {
     font-size: 10px;
 
     opacity: 0.45;
-} */
+}
 
 
 /* =========================
@@ -1973,91 +1761,55 @@ button:hover {
 
 .save-memory-button {
     display: block;
+
     width: 100%;
 
-    margin-top: 17px;
+    margin-top: 18px;
     padding: 13px 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
 
     color: white;
 
     font-family: Arial, sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 2px;
 
     cursor: pointer;
 
-    transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .save-memory-button:hover {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.16);
+
     transform: translateY(-2px);
 }
-
-
-/* =========================
-   SAVED MESSAGE
-   ========================= */
 
 .memory-saved {
     display: none;
 
-    margin-top: 10px;
+    margin-top: 12px;
 
     font-family: Arial, sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 1px;
 
-    color: rgba(255, 255, 255, 0.55);
+    opacity: 0.6;
 }
 
 .memory-saved.show {
     display: block;
 }
 
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    .memory-response {
-        margin-top: 28px;
-    }
-
-    .memory-response h3 {
-        font-size: 16px;
-    }
-
-    #dailyResponse {
-        min-height: 90px;
-    }
-
-    .voice-note-section {
-        padding: 12px;
-    }
-
-    .voice-button {
-        width: 100%;
-    }
-
-}
-
 /* =========================
    DAILY PHOTO PREVIEW
 ========================= */
 
-/* .daily-photo-preview {
+.daily-photo-preview {
     display: none;
 
     width: 100%;
@@ -2076,32 +1828,6 @@ button:hover {
         0 10px 30px rgba(0, 0, 0, 0.3);
 
     animation: photoAppear 0.4s ease;
-}
-
-.daily-photo-preview.show {
-    display: block;
-} */
-
-/* =========================
-   PHOTO PREVIEW
-   ========================= */
-
-.daily-photo-preview {
-    display: none;
-    width: 100%;
-    max-height: 220px;
-    object-fit: cover;
-
-    margin: 12px auto 5px;
-
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.25);
-
-    animation:
-        photoAppear 0.4s ease;
 }
 
 .daily-photo-preview.show {
@@ -2125,25 +1851,25 @@ button:hover {
 .remove-photo-button {
     display: none;
 
-    margin: 8px auto 0;
-    padding: 5px 9px;
+    margin: 8px auto 15px;
 
-    border: none;
-    border-radius: 0;
+    padding: 8px 14px;
 
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    color: rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
 
-    font-family: Arial, sans-serif;
-    font-size: 8px;
-    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.06);
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-family: Georgia, serif;
+
+    font-size: 0.75rem;
 
     cursor: pointer;
 
-    transition:
-        color 0.2s ease,
-        opacity 0.2s ease;
+    transition: 0.3s ease;
 }
 
 .remove-photo-button.show {
@@ -2151,7 +1877,9 @@ button:hover {
 }
 
 .remove-photo-button:hover {
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
 }
 
 /* =========================
@@ -4963,168 +4691,6 @@ button:focus-visible {
 
         z-index: 100;
 
-    }
-
-}
-
-/* =========================
-   DELETE CONFIRMATION
-   ========================= */
-
-.delete-confirm-modal {
-    position: fixed;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    box-sizing: border-box;
-
-    background: rgba(3, 5, 15, 0.72);
-
-    backdrop-filter: blur(10px);
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    z-index: 500;
-
-    transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease;
-}
-
-.delete-confirm-modal.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.delete-confirm-card {
-    width: min(360px, 100%);
-
-    padding: 28px 24px;
-
-    box-sizing: border-box;
-
-    text-align: center;
-
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(39, 45, 82, 0.96),
-            rgba(12, 15, 35, 0.98)
-        );
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.45);
-
-    transform: scale(0.95);
-
-    transition:
-        transform 0.25s ease;
-}
-
-.delete-confirm-modal.active
-.delete-confirm-card {
-    transform: scale(1);
-}
-
-.delete-confirm-icon {
-    width: 42px;
-    height: 42px;
-
-    margin: 0 auto 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.06);
-
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 18px;
-}
-
-.delete-confirm-card h3 {
-    margin: 0 0 10px;
-
-    font-family: Georgia, serif;
-    font-size: 19px;
-    font-weight: normal;
-
-    color: rgba(255, 255, 255, 0.92);
-}
-
-.delete-confirm-card p {
-    margin: 0 auto 22px;
-
-    max-width: 280px;
-
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    line-height: 1.6;
-
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.delete-confirm-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.delete-confirm-buttons button {
-    flex: 1;
-
-    padding: 11px 12px;
-
-    border-radius: 30px;
-
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-}
-
-#cancelDelete {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    background: rgba(255, 255, 255, 0.04);
-
-    color: rgba(255, 255, 255, 0.6);
-}
-
-#confirmDelete {
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
-    background: rgba(255, 255, 255, 0.1);
-
-    color: rgba(255, 255, 255, 0.85);
-}
-
-#cancelDelete:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-#confirmDelete:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-@media (max-width: 600px) {
-
-    .delete-confirm-card {
-        padding: 25px 20px;
     }
 
 }
