@@ -118,6 +118,32 @@ const navigationDay =
 
 let currentPage = "landing";
 
+
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recordedVoiceBlob = null;
+let recordingTimerInterval = null;
+let recordingSeconds = 0;
+
+const recordVoice =
+    document.getElementById("recordVoice");
+
+const stopVoice =
+    document.getElementById("stopVoice");
+
+const recordingStatus =
+    document.getElementById("recordingStatus");
+
+const recordingTimer =
+    document.getElementById("recordingTimer");
+
+const voicePreview =
+    document.getElementById("voicePreview");
+
+const removeVoice =
+    document.getElementById("removeVoice");
+
 // =========================
 // ENTER SECRET HOME
 // =========================
@@ -462,8 +488,8 @@ function getUnlockedDays() {
         new Date("2026-09-17");
 
     const today =
-        new Date();
-        // new Date("2027-09-17");
+        // new Date();
+        new Date("2027-09-19");
 
     const differenceInTime =
         today - startDate;
@@ -493,6 +519,16 @@ function getUnlockedDays() {
 // =========================
 
 function openSurprise(dayNumber) {
+
+    // Wait until IndexedDB is ready before opening the surprise.
+    // This prevents memoryDB.transaction() from running too early.
+    if (!memoryDB) {
+        console.log("Waiting for memory database...");
+        setTimeout(function () {
+            openSurprise(dayNumber);
+        }, 50);
+        return;
+    }
 
     console.log(
         "Opening Day:",
@@ -988,7 +1024,7 @@ let voiceRemoved = false;
 const dbRequest =
     indexedDB.open(
         "365DaysOfUsDB",
-        6
+        7
     );
 
 dbRequest.onupgradeneeded =
@@ -1095,10 +1131,20 @@ dbRequest.onsuccess =
     };
 
 dbRequest.onerror =
+    function (event) {
+
+        console.error(
+            "Could not open memory database.",
+            event.target.error
+        );
+
+    };
+
+dbRequest.onblocked =
     function () {
 
         console.error(
-            "Could not open memory database."
+            "Memory database opening is blocked."
         );
 
     };
@@ -4774,29 +4820,29 @@ document
 // VOICE NOTE RECORDING
 // =========================
 
-let mediaRecorder = null;
-let audioChunks = [];
-let recordedVoiceBlob = null;
-let recordingTimerInterval = null;
-let recordingSeconds = 0;
+// let mediaRecorder = null;
+// let audioChunks = [];
+// let recordedVoiceBlob = null;
+// let recordingTimerInterval = null;
+// let recordingSeconds = 0;
 
-const recordVoice =
-    document.getElementById("recordVoice");
+// const recordVoice =
+//     document.getElementById("recordVoice");
 
-const stopVoice =
-    document.getElementById("stopVoice");
+// const stopVoice =
+//     document.getElementById("stopVoice");
 
-const recordingStatus =
-    document.getElementById("recordingStatus");
+// const recordingStatus =
+//     document.getElementById("recordingStatus");
 
-const recordingTimer =
-    document.getElementById("recordingTimer");
+// const recordingTimer =
+//     document.getElementById("recordingTimer");
 
-const voicePreview =
-    document.getElementById("voicePreview");
+// const voicePreview =
+//     document.getElementById("voicePreview");
 
-const removeVoice =
-    document.getElementById("removeVoice");
+// const removeVoice =
+//     document.getElementById("removeVoice");
 
 
 // =========================
