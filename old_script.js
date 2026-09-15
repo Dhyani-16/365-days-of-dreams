@@ -488,7 +488,8 @@ function getUnlockedDays() {
         new Date("2026-09-17");
 
     const today =
-        new Date();
+        // new Date();
+        new Date("2027-09-19");
 
     const differenceInTime =
         today - startDate;
@@ -1023,7 +1024,7 @@ let voiceRemoved = false;
 const dbRequest =
     indexedDB.open(
         "365DaysOfUsDB",
-        10
+        7
     );
 
 dbRequest.onupgradeneeded =
@@ -1906,12 +1907,14 @@ function restoreAutomaticBackup() {
         window.isRestoringBackup = false;
         return;
     }
+}
 
-    // =========================
-    // READ LATEST BACKUP
-    // =========================
 
-    const readTransaction =
+// =========================
+// READ LATEST BACKUP
+// =========================
+
+const readTransaction =
     memoryDB.transaction(
         ["autoBackup"],
         "readonly"
@@ -2098,8 +2101,6 @@ request.onerror =
         );
 
     };
-
-}
 
 // =========================
 // MEMORY MUSEUM
