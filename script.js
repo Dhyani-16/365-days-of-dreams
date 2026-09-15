@@ -116,6 +116,8 @@ const nextDay =
 const navigationDay =
     document.getElementById("navigationDay");
 
+let currentPage = "landing";
+
 // =========================
 // ENTER SECRET HOME
 // =========================
@@ -3602,16 +3604,7 @@ function createHomeStarField() {
 
 createHomeStarField();
 
-
-// =========================
-// MOBILE / BROWSER BACK GESTURE
-// =========================
-
-let currentPage = "landing";
-
-// =========================
-// ENTER SECRET HOME
-// =========================
+// let currentPage = "landing";
 
 // =========================
 // ENTER SECRET HOME
