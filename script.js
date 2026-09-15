@@ -460,8 +460,7 @@ function getUnlockedDays() {
         new Date("2026-09-17");
 
     const today =
-        new Date();
-        // new Date("2027-09-17");
+        new Date("2027-09-17");
 
     const differenceInTime =
         today - startDate;
