@@ -2026,27 +2026,6 @@ button:hover {
 
 
 /* =========================
-   PHOTO / VOICE LIMIT MESSAGE
-   ========================= */
-
-.limit-message {
-    display: none;
-
-    margin-top: 10px;
-
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-
-    color: rgba(255, 190, 190, 0.85);
-}
-
-.limit-message.show {
-    display: block;
-}
-
-
-/* =========================
    MOBILE
    ========================= */
 

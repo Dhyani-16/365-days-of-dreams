@@ -47,21 +47,6 @@ const dailyPhotoPreview =
     document.getElementById("dailyPhotoPreview");
 const removePhoto =
     document.getElementById("removePhoto");
-
-const dailyPhoto2 = document.getElementById("dailyPhoto2");
-const photoName2 = document.getElementById("photoName2");
-const dailyPhotoPreview2 =
-    document.getElementById("dailyPhotoPreview2");
-const removePhoto2 =
-    document.getElementById("removePhoto2");
-
-const dailyPhoto3 = document.getElementById("dailyPhoto3");
-const photoName3 = document.getElementById("photoName3");
-const dailyPhotoPreview3 =
-    document.getElementById("dailyPhotoPreview3");
-const removePhoto3 =
-    document.getElementById("removePhoto3");
-
 const saveMemory =
     document.getElementById("saveMemory");
 const memorySaved =
@@ -141,11 +126,6 @@ let recordedVoiceBlob = null;
 let recordingTimerInterval = null;
 let recordingSeconds = 0;
 
-// Which photo/voice slot (1, 2, or 3) is next in line.
-// Recording only ever happens into one slot at a time,
-// since a device only has one microphone stream.
-let activeVoiceSlot = null;
-
 const recordVoice =
     document.getElementById("recordVoice");
 
@@ -163,38 +143,6 @@ const voicePreview =
 
 const removeVoice =
     document.getElementById("removeVoice");
-
-let recordedVoiceBlob2 = null;
-
-const voicePreview2 =
-    document.getElementById("voicePreview2");
-
-const removeVoice2 =
-    document.getElementById("removeVoice2");
-
-let recordedVoiceBlob3 = null;
-
-const voicePreview3 =
-    document.getElementById("voicePreview3");
-
-const removeVoice3 =
-    document.getElementById("removeVoice3");
-
-// =========================
-// ADD PHOTO / RECORD VOICE
-// TRIGGER BUTTONS
-// =========================
-
-const addPhotoButton =
-    document.getElementById("addPhotoButton");
-
-const photoLimitMessage =
-    document.getElementById("photoLimitMessage");
-
-const voiceLimitMessage =
-    document.getElementById("voiceLimitMessage");
-
-
 
 // =========================
 // ENTER SECRET HOME
@@ -602,26 +550,10 @@ function openSurprise(dayNumber) {
     existingMemoryPhotoName = "";
     existingVoiceNote = null;
 
-    existingMemoryPhoto2 = null;
-    existingMemoryPhotoName2 = "";
-    existingVoiceNote2 = null;
-
-    existingMemoryPhoto3 = null;
-    existingMemoryPhotoName3 = "";
-    existingVoiceNote3 = null;
-
     photoRemoved = false;
     voiceRemoved = false;
 
-    photoRemoved2 = false;
-    voiceRemoved2 = false;
-
-    photoRemoved3 = false;
-    voiceRemoved3 = false;
-
     recordedVoiceBlob = null;
-    recordedVoiceBlob2 = null;
-    recordedVoiceBlob3 = null;
 
 
     // =========================
@@ -649,34 +581,6 @@ function openSurprise(dayNumber) {
         "show"
     );
 
-    dailyPhoto2.value = "";
-
-    photoName2.textContent = "";
-
-    dailyPhotoPreview2.src = "";
-
-    dailyPhotoPreview2.classList.remove(
-        "show"
-    );
-
-    removePhoto2.classList.remove(
-        "show"
-    );
-
-    dailyPhoto3.value = "";
-
-    photoName3.textContent = "";
-
-    dailyPhotoPreview3.src = "";
-
-    dailyPhotoPreview3.classList.remove(
-        "show"
-    );
-
-    removePhoto3.classList.remove(
-        "show"
-    );
-
 
     // =========================
     // RESET VOICE UI
@@ -694,46 +598,11 @@ function openSurprise(dayNumber) {
 
     removeVoice.hidden = true;
 
-    voicePreview2.pause();
-
-    voicePreview2.removeAttribute(
-        "src"
-    );
-
-    voicePreview2.load();
-
-    voicePreview2.hidden = true;
-
-    removeVoice2.hidden = true;
-
-    voicePreview3.pause();
-
-    voicePreview3.removeAttribute(
-        "src"
-    );
-
-    voicePreview3.load();
-
-    voicePreview3.hidden = true;
-
-    removeVoice3.hidden = true;
-
-    // Shared recording controls (only one
-    // recording can be in progress at a time).
-
     recordVoice.hidden = false;
 
     stopVoice.hidden = true;
 
     recordingStatus.hidden = true;
-
-    voiceLimitMessage.classList.remove(
-        "show"
-    );
-
-    photoLimitMessage.classList.remove(
-        "show"
-    );
 
     clearInterval(
         recordingTimerInterval
@@ -743,8 +612,6 @@ function openSurprise(dayNumber) {
 
     recordingTimer.textContent =
         "00:00";
-
-    activeVoiceSlot = null;
 
 
     // IMPORTANT:
@@ -839,82 +706,6 @@ function openSurprise(dayNumber) {
 
             }
 
-            if (memory.photo2) {
-
-                existingMemoryPhoto2 =
-                    memory.photo2;
-
-                existingMemoryPhotoName2 =
-                    memory.photoName2 || "";
-
-
-                const photoURL2 =
-                    URL.createObjectURL(
-                        memory.photo2
-                    );
-
-                dailyPhotoPreview2.src =
-                    photoURL2;
-
-                dailyPhotoPreview2.classList.add(
-                    "show"
-                );
-
-                removePhoto2.classList.add(
-                    "show"
-                );
-
-
-                if (
-                    memory.photoName2
-                ) {
-
-                    photoName2.textContent =
-                        "📎 " +
-                        memory.photoName2;
-
-                }
-
-            }
-
-            if (memory.photo3) {
-
-                existingMemoryPhoto3 =
-                    memory.photo3;
-
-                existingMemoryPhotoName3 =
-                    memory.photoName3 || "";
-
-
-                const photoURL3 =
-                    URL.createObjectURL(
-                        memory.photo3
-                    );
-
-                dailyPhotoPreview3.src =
-                    photoURL3;
-
-                dailyPhotoPreview3.classList.add(
-                    "show"
-                );
-
-                removePhoto3.classList.add(
-                    "show"
-                );
-
-
-                if (
-                    memory.photoName3
-                ) {
-
-                    photoName3.textContent =
-                        "📎 " +
-                        memory.photoName3;
-
-                }
-
-            }
-
 
             // =========================
             // LOAD VOICE NOTE
@@ -945,48 +736,6 @@ function openSurprise(dayNumber) {
                     "Saved voice note loaded for Day " +
                     dayNumber
                 );
-
-            }
-
-            if (memory.voiceNote2) {
-
-                existingVoiceNote2 =
-                    memory.voiceNote2;
-
-                const voiceURL2 =
-                    URL.createObjectURL(
-                        memory.voiceNote2
-                    );
-
-                voicePreview2.src =
-                    voiceURL2;
-
-                voicePreview2.hidden =
-                    false;
-
-                removeVoice2.hidden =
-                    false;
-
-            }
-
-            if (memory.voiceNote3) {
-
-                existingVoiceNote3 =
-                    memory.voiceNote3;
-
-                const voiceURL3 =
-                    URL.createObjectURL(
-                        memory.voiceNote3
-                    );
-
-                voicePreview3.src =
-                    voiceURL3;
-
-                voicePreview3.hidden =
-                    false;
-
-                removeVoice3.hidden =
-                    false;
 
             }
 
@@ -1198,53 +947,6 @@ letterModal.addEventListener(
 );
 
 // =========================
-// ADD PHOTO BUTTON
-// =========================
-
-addPhotoButton.addEventListener(
-    "click",
-    function () {
-
-        const photoPreviews =
-            [dailyPhotoPreview, dailyPhotoPreview2, dailyPhotoPreview3];
-
-        const photoInputs =
-            [dailyPhoto, dailyPhoto2, dailyPhoto3];
-
-        const nextSlotIndex =
-            photoPreviews.findIndex(
-                function (preview) {
-                    return !preview.classList.contains("show");
-                }
-            );
-
-        if (nextSlotIndex === -1) {
-
-            photoLimitMessage.classList.add(
-                "show"
-            );
-
-            setTimeout(
-                function () {
-
-                    photoLimitMessage.classList.remove(
-                        "show"
-                    );
-
-                },
-                2500
-            );
-
-            return;
-
-        }
-
-        photoInputs[nextSlotIndex].click();
-
-    }
-);
-
-// =========================
 // DAILY MEMORY PHOTO INPUT
 // =========================
 
@@ -1298,102 +1000,6 @@ dailyPhoto.addEventListener(
     }
 );
 
-dailyPhoto2.addEventListener(
-    "change",
-    function () {
-
-        if (
-            dailyPhoto2.files.length > 0
-        ) {
-
-            const file =
-                dailyPhoto2.files[0];
-
-            photoRemoved2 = false;
-
-            photoName2.textContent =
-                "📎 " +
-                file.name;
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function (event) {
-
-                    dailyPhotoPreview2.src =
-                        event.target.result;
-
-                    dailyPhotoPreview2.classList.add(
-                        "show"
-                    );
-
-                    removePhoto2.classList.add(
-                        "show"
-                    );
-
-                };
-
-
-            reader.readAsDataURL(
-                file
-            );
-
-        }
-
-    }
-);
-
-dailyPhoto3.addEventListener(
-    "change",
-    function () {
-
-        if (
-            dailyPhoto3.files.length > 0
-        ) {
-
-            const file =
-                dailyPhoto3.files[0];
-
-            photoRemoved3 = false;
-
-            photoName3.textContent =
-                "📎 " +
-                file.name;
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function (event) {
-
-                    dailyPhotoPreview3.src =
-                        event.target.result;
-
-                    dailyPhotoPreview3.classList.add(
-                        "show"
-                    );
-
-                    removePhoto3.classList.add(
-                        "show"
-                    );
-
-                };
-
-
-            reader.readAsDataURL(
-                file
-            );
-
-        }
-
-    }
-);
-
 // =========================
 // INDEXEDDB MEMORY SYSTEM
 // =========================
@@ -1411,22 +1017,6 @@ let existingVoiceNote = null;
 
 let photoRemoved = false;
 let voiceRemoved = false;
-
-let existingMemoryPhoto2 = null;
-let existingMemoryPhotoName2 = "";
-
-let existingVoiceNote2 = null;
-
-let photoRemoved2 = false;
-let voiceRemoved2 = false;
-
-let existingMemoryPhoto3 = null;
-let existingMemoryPhotoName3 = "";
-
-let existingVoiceNote3 = null;
-
-let photoRemoved3 = false;
-let voiceRemoved3 = false;
 
 // let recordedVoiceBlob = null;
 
@@ -1710,12 +1300,6 @@ saveMemory.addEventListener(
                 const hasNewPhoto =
                     dailyPhoto.files.length > 0;
 
-                const hasNewPhoto2 =
-                    dailyPhoto2.files.length > 0;
-
-                const hasNewPhoto3 =
-                    dailyPhoto3.files.length > 0;
-
 
                 // =========================
                 // DETERMINE FINAL PHOTO
@@ -1756,62 +1340,6 @@ saveMemory.addEventListener(
 
                 }
 
-                let finalPhoto2 = null;
-
-                let finalPhotoName2 = "";
-
-
-                if (hasNewPhoto2) {
-
-                    finalPhoto2 =
-                        dailyPhoto2.files[0];
-
-                    finalPhotoName2 =
-                        dailyPhoto2.files[0].name;
-
-                } else if (
-                    existingMemory &&
-                    existingMemory.photo2 &&
-                    !photoRemoved2
-                ) {
-
-                    finalPhoto2 =
-                        existingMemory.photo2;
-
-                    finalPhotoName2 =
-                        existingMemory.photoName2 ||
-                        "";
-
-                }
-
-                let finalPhoto3 = null;
-
-                let finalPhotoName3 = "";
-
-
-                if (hasNewPhoto3) {
-
-                    finalPhoto3 =
-                        dailyPhoto3.files[0];
-
-                    finalPhotoName3 =
-                        dailyPhoto3.files[0].name;
-
-                } else if (
-                    existingMemory &&
-                    existingMemory.photo3 &&
-                    !photoRemoved3
-                ) {
-
-                    finalPhoto3 =
-                        existingMemory.photo3;
-
-                    finalPhotoName3 =
-                        existingMemory.photoName3 ||
-                        "";
-
-                }
-
 
                 // =========================
                 // DETERMINE FINAL VOICE NOTE
@@ -1843,44 +1371,6 @@ saveMemory.addEventListener(
 
                 }
 
-                let finalVoiceNote2 = null;
-
-
-                if (recordedVoiceBlob2) {
-
-                    finalVoiceNote2 =
-                        recordedVoiceBlob2;
-
-                } else if (
-                    existingMemory &&
-                    existingMemory.voiceNote2 &&
-                    !voiceRemoved2
-                ) {
-
-                    finalVoiceNote2 =
-                        existingMemory.voiceNote2;
-
-                }
-
-                let finalVoiceNote3 = null;
-
-
-                if (recordedVoiceBlob3) {
-
-                    finalVoiceNote3 =
-                        recordedVoiceBlob3;
-
-                } else if (
-                    existingMemory &&
-                    existingMemory.voiceNote3 &&
-                    !voiceRemoved3
-                ) {
-
-                    finalVoiceNote3 =
-                        existingMemory.voiceNote3;
-
-                }
-
 
                 // =========================
                 // CHECK IF MEMORY IS EMPTY
@@ -1890,11 +1380,7 @@ saveMemory.addEventListener(
                     !existingMemory &&
                     !text &&
                     !finalPhoto &&
-                    !finalPhoto2 &&
-                    !finalPhoto3 &&
-                    !finalVoiceNote &&
-                    !finalVoiceNote2 &&
-                    !finalVoiceNote3
+                    !finalVoiceNote
                 ) {
 
                     dailyResponse.focus();
@@ -1936,26 +1422,8 @@ saveMemory.addEventListener(
                     photo:
                         finalPhoto,
 
-                    photoName2:
-                        finalPhotoName2,
-
-                    photo2:
-                        finalPhoto2,
-
-                    photoName3:
-                        finalPhotoName3,
-
-                    photo3:
-                        finalPhoto3,
-
                     voiceNote:
                         finalVoiceNote,
-
-                    voiceNote2:
-                        finalVoiceNote2,
-
-                    voiceNote3:
-                        finalVoiceNote3,
 
                     savedAt:
                         new Date()
@@ -2011,24 +1479,6 @@ saveMemory.addEventListener(
                         existingVoiceNote =
                             finalVoiceNote;
 
-                        existingMemoryPhoto2 =
-                            finalPhoto2;
-
-                        existingMemoryPhotoName2 =
-                            finalPhotoName2;
-
-                        existingVoiceNote2 =
-                            finalVoiceNote2;
-
-                        existingMemoryPhoto3 =
-                            finalPhoto3;
-
-                        existingMemoryPhotoName3 =
-                            finalPhotoName3;
-
-                        existingVoiceNote3 =
-                            finalVoiceNote3;
-
 
                         // Reset deletion flags
 
@@ -2038,18 +1488,6 @@ saveMemory.addEventListener(
                         voiceRemoved =
                             false;
 
-                        photoRemoved2 =
-                            false;
-
-                        voiceRemoved2 =
-                            false;
-
-                        photoRemoved3 =
-                            false;
-
-                        voiceRemoved3 =
-                            false;
-
 
                         // New recording has now
                         // been saved.
@@ -2057,22 +1495,10 @@ saveMemory.addEventListener(
                         recordedVoiceBlob =
                             null;
 
-                        recordedVoiceBlob2 =
-                            null;
-
-                        recordedVoiceBlob3 =
-                            null;
-
 
                         // Clear selected file input
 
                         dailyPhoto.value =
-                            "";
-
-                        dailyPhoto2.value =
-                            "";
-
-                        dailyPhoto3.value =
                             "";
 
 
@@ -2855,49 +2281,34 @@ function renderMemoryMuseum(memories) {
             }
 
             // =========================
-            // PHOTOS
+            // PHOTO
             // =========================
 
-            [
-                memory.photo,
-                memory.photo2,
-                memory.photo3
-            ].forEach(
-                function (photoBlob, index) {
+            if (memory.photo) {
 
-                    if (!photoBlob) {
-                        return;
-                    }
-
-                    const image =
-                        document.createElement(
-                            "img"
-                        );
-
-                    image.classList.add(
-                        "museum-photo"
+                const image =
+                    document.createElement(
+                        "img"
                     );
 
-                    image.alt =
-                        "Memory from Day " +
-                        memory.day +
-                        (
-                            index > 0
-                                ? " (" + (index + 1) + ")"
-                                : ""
-                        );
+                image.classList.add(
+                    "museum-photo"
+                );
 
-                    image.src =
-                        URL.createObjectURL(
-                            photoBlob
-                        );
+                image.alt =
+                    "Memory from Day " +
+                    memory.day;
 
-                    memoryCard.appendChild(
-                        image
+                image.src =
+                    URL.createObjectURL(
+                        memory.photo
                     );
 
-                }
-            );
+                memoryCard.appendChild(
+                    image
+                );
+
+            }
 
             memoryMuseum.appendChild(
                 memoryCard
@@ -4022,19 +3433,13 @@ function updateYearStatistics() {
             // =========================
 
             const photos =
-                memories.reduce(
-                    function (total, memory) {
+                memories.filter(
+                    function (memory) {
 
-                        return (
-                            total +
-                            (memory.photo ? 1 : 0) +
-                            (memory.photo2 ? 1 : 0) +
-                            (memory.photo3 ? 1 : 0)
-                        );
+                        return !!memory.photo;
 
-                    },
-                    0
-                );
+                    }
+                ).length;
 
             document.getElementById(
                 "statsPhotos"
@@ -4786,31 +4191,11 @@ function filterMemoryMuseum(
                                 )
                                     .toLowerCase();
 
-                            const photoName2 =
-                                (
-                                    memory.photoName2 ||
-                                    ""
-                                )
-                                    .toLowerCase();
-
-                            const photoName3 =
-                                (
-                                    memory.photoName3 ||
-                                    ""
-                                )
-                                    .toLowerCase();
-
                             return (
                                 text.includes(
                                     searchTerm
                                 ) ||
                                 photoName.includes(
-                                    searchTerm
-                                ) ||
-                                photoName2.includes(
-                                    searchTerm
-                                ) ||
-                                photoName3.includes(
                                     searchTerm
                                 )
                             );
@@ -5467,45 +4852,6 @@ recordVoice.addEventListener(
     "click",
     async function () {
 
-        // =========================
-        // FIND NEXT EMPTY VOICE SLOT
-        // =========================
-
-        const voicePreviews =
-            [voicePreview, voicePreview2, voicePreview3];
-
-        const nextSlotIndex =
-            voicePreviews.findIndex(
-                function (preview) {
-                    return preview.hidden;
-                }
-            );
-
-        if (nextSlotIndex === -1) {
-
-            voiceLimitMessage.classList.add(
-                "show"
-            );
-
-            setTimeout(
-                function () {
-
-                    voiceLimitMessage.classList.remove(
-                        "show"
-                    );
-
-                },
-                2500
-            );
-
-            return;
-
-        }
-
-        activeVoiceSlot =
-            nextSlotIndex + 1;
-
-
         try {
 
             const stream =
@@ -5545,7 +4891,7 @@ recordVoice.addEventListener(
             mediaRecorder.onstop =
                 function () {
 
-                    const finishedBlob =
+                    recordedVoiceBlob =
                         new Blob(
                             audioChunks,
                             {
@@ -5555,63 +4901,33 @@ recordVoice.addEventListener(
                             }
                         );
 
+
                     const audioURL =
                         URL.createObjectURL(
-                            finishedBlob
+                            recordedVoiceBlob
                         );
 
-                    // =========================
-                    // STORE INTO THE SLOT THAT
-                    // WAS ACTIVE FOR THIS RECORDING
-                    // =========================
 
-                    const targetPreview =
-                        voicePreviews[activeVoiceSlot - 1];
-
-                    const targetRemoveButtons =
-                        [removeVoice, removeVoice2, removeVoice3];
-
-                    const targetRemoveButton =
-                        targetRemoveButtons[activeVoiceSlot - 1];
-
-                    if (activeVoiceSlot === 1) {
-
-                        recordedVoiceBlob =
-                            finishedBlob;
-
-                    } else if (activeVoiceSlot === 2) {
-
-                        recordedVoiceBlob2 =
-                            finishedBlob;
-
-                    } else if (activeVoiceSlot === 3) {
-
-                        recordedVoiceBlob3 =
-                            finishedBlob;
-
-                    }
-
-                    targetPreview.src =
+                    voicePreview.src =
                         audioURL;
 
-                    targetPreview.hidden =
+                    voicePreview.hidden =
                         false;
 
-                    targetRemoveButton.hidden =
+
+                    removeVoice.hidden =
                         false;
 
 
                     recordingStatus.hidden =
                         true;
 
+
                     recordVoice.hidden =
                         false;
 
                     stopVoice.hidden =
                         true;
-
-                    activeVoiceSlot =
-                        null;
 
 
                     clearInterval(
@@ -5698,9 +5014,6 @@ recordVoice.addEventListener(
                 "Microphone access is needed to record a voice note."
             );
 
-            activeVoiceSlot =
-                null;
-
         }
 
     }
@@ -5726,7 +5039,6 @@ stopVoice.addEventListener(
 
     }
 );
-
 
 
 // =========================
@@ -5874,46 +5186,6 @@ removePhoto.addEventListener(
     }
 );
 
-removePhoto2.addEventListener(
-    "click",
-    function () {
-
-        deleteTarget =
-            "photo2";
-
-        deleteConfirmTitle.textContent =
-            "Remove this photo?";
-
-        deleteConfirmMessage.textContent =
-            "The photo will be removed when you save this memory.";
-
-        deleteConfirmModal.classList.add(
-            "active"
-        );
-
-    }
-);
-
-removePhoto3.addEventListener(
-    "click",
-    function () {
-
-        deleteTarget =
-            "photo3";
-
-        deleteConfirmTitle.textContent =
-            "Remove this photo?";
-
-        deleteConfirmMessage.textContent =
-            "The photo will be removed when you save this memory.";
-
-        deleteConfirmModal.classList.add(
-            "active"
-        );
-
-    }
-);
-
 
 // =========================
 // REQUEST VOICE REMOVAL
@@ -5925,46 +5197,6 @@ removeVoice.addEventListener(
 
         deleteTarget =
             "voice";
-
-        deleteConfirmTitle.textContent =
-            "Remove this voice note?";
-
-        deleteConfirmMessage.textContent =
-            "The voice note will be removed when you save this memory.";
-
-        deleteConfirmModal.classList.add(
-            "active"
-        );
-
-    }
-);
-
-removeVoice2.addEventListener(
-    "click",
-    function () {
-
-        deleteTarget =
-            "voice2";
-
-        deleteConfirmTitle.textContent =
-            "Remove this voice note?";
-
-        deleteConfirmMessage.textContent =
-            "The voice note will be removed when you save this memory.";
-
-        deleteConfirmModal.classList.add(
-            "active"
-        );
-
-    }
-);
-
-removeVoice3.addEventListener(
-    "click",
-    function () {
-
-        deleteTarget =
-            "voice3";
 
         deleteConfirmTitle.textContent =
             "Remove this voice note?";
@@ -6034,60 +5266,6 @@ confirmDelete.addEventListener(
 
         }
 
-        if (
-            deleteTarget ===
-            "photo2"
-        ) {
-
-            photoRemoved2 =
-                true;
-
-            dailyPhoto2.value =
-                "";
-
-            dailyPhotoPreview2.src =
-                "";
-
-            dailyPhotoPreview2.classList.remove(
-                "show"
-            );
-
-            removePhoto2.classList.remove(
-                "show"
-            );
-
-            photoName2.textContent =
-                "";
-
-        }
-
-        if (
-            deleteTarget ===
-            "photo3"
-        ) {
-
-            photoRemoved3 =
-                true;
-
-            dailyPhoto3.value =
-                "";
-
-            dailyPhotoPreview3.src =
-                "";
-
-            dailyPhotoPreview3.classList.remove(
-                "show"
-            );
-
-            removePhoto3.classList.remove(
-                "show"
-            );
-
-            photoName3.textContent =
-                "";
-
-        }
-
 
         if (
             deleteTarget ===
@@ -6116,60 +5294,6 @@ confirmDelete.addEventListener(
 
             recordVoice.hidden =
                 false;
-
-        }
-
-        if (
-            deleteTarget ===
-            "voice2"
-        ) {
-
-            voiceRemoved2 =
-                true;
-
-            recordedVoiceBlob2 =
-                null;
-
-            voicePreview2.pause();
-
-            voicePreview2.removeAttribute(
-                "src"
-            );
-
-            voicePreview2.load();
-
-            voicePreview2.hidden =
-                true;
-
-            removeVoice2.hidden =
-                true;
-
-        }
-
-        if (
-            deleteTarget ===
-            "voice3"
-        ) {
-
-            voiceRemoved3 =
-                true;
-
-            recordedVoiceBlob3 =
-                null;
-
-            voicePreview3.pause();
-
-            voicePreview3.removeAttribute(
-                "src"
-            );
-
-            voicePreview3.load();
-
-            voicePreview3.hidden =
-                true;
-
-            removeVoice3.hidden =
-                true;
 
         }
 
