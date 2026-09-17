@@ -94,7 +94,7 @@ const surprises = {
     14: {
         type: "text",
         title: "Two weeks",
-        message: "Fourteen tiny days. That's not a huge amount of time, but it's enough to start noticing something: a year isn't really made of big events. It's made of tiny ordinary moments that somehow become ours.",
+        message: "Fourteen tiny days. That's not a huge amount of time, but it's enough to start noticing something: a year isn't really made of big events. It's made of tiny ordinary moments that somehow become special.",
         signature: "— Day 14 "
     },
 
@@ -206,15 +206,15 @@ const surprises = {
     30: {
         type: "text",
         title: "The first little chapter",
-        message: "Thirty days. That's our first little chapter done. And if you've made it this far, congratulations: you are now officially committed to opening a suspiciously sentimental website every day. 😭💚",
+        message: "Thirty days. That's your first little chapter done. And if you've made it this far, congratulations: you are now officially committed to opening a suspiciously sentimental website every day. 😭💚",
         signature: "— see you in the next chapter"
     },
 
     31: {
         type: "question",
-        title: "Day 31",
-        message: "What's something completely random that you think I would immediately understand without you having to explain it?",
-        signature: "— friendship has its own language 💭"
+        title: "The surprise about yourself",
+        message: "What's one thing you've learned about yourself this year that genuinely surprised you?",
+        signature: "— plot twists, but make it personal"
     },
 
     32: {
@@ -443,9 +443,9 @@ const surprises = {
 
     64: {
         type: "question",
-        title: "Would you rather?",
-        message: "Would you rather relive one amazing day from your past or skip ahead and see one amazing day from your future?",
-        signature: "— past or future?"
+        title: "The random childhood memory",
+        message: "What's one memory from being a kid that you find yourself thinking about way more often than you'd expect?",
+        signature: "— brains are strange like that"
     },
 
     65: {
@@ -856,7 +856,7 @@ const surprises = {
 
     123: {
         type: "challenge",
-        title: "The tiny celebration",
+        title: "The quiet win",
         message: "Celebrate something you've accomplished recently, even if nobody else would consider it a big deal. You know how hard it was. That's enough.",
         signature: "— you earned this one 🎉"
     },
@@ -954,7 +954,7 @@ const surprises = {
 
     137: {
         type: "question",
-        title: "Choose our chaos",
+        title: "Trains vs. roads",
         message: "One spontaneous train journey or one completely unplanned road trip?",
         signature: "— adventure committee 🚂"
     },
@@ -1416,7 +1416,7 @@ const surprises = {
 
     203: {
         type: "challenge",
-        title: "The tiny adventure",
+        title: "The first try",
         message: "Try something today that you've never tried before. It doesn't have to be impressive. New is enough.",
         signature: "— one tiny first"
     },
@@ -1430,7 +1430,7 @@ const surprises = {
 
     205: {
         type: "text",
-        title: "A little reminder",
+        title: "The unexpected version",
         message: "It's okay if your life doesn't look exactly how you imagined it would. Sometimes the unexpected version turns out to have some of the best parts.",
         signature: "— leave room for the plot twist"
     },
@@ -1500,7 +1500,7 @@ const surprises = {
 
     215: {
         type: "text",
-        title: "A little thank you",
+        title: "Thank you for the unplanned",
         message: "Thank you for all the moments that weren't planned. The conversations that lasted longer than expected, the random jokes, the unnecessary updates and all the little 'look at this' moments.",
         signature: "— those count too 💚"
     },
@@ -1584,8 +1584,8 @@ const surprises = {
 
     227: {
         type: "question",
-        title: "The impossible sleepover",
-        message: "If we had a completely free sleepover with no responsibilities the next morning, what would we actually do all night?",
+        title: "The chaos sleepover",
+        message: "If we planned one deliberately ridiculous themed sleepover — bad movies, worse snacks, zero adult decisions allowed — what's the theme?",
         signature: "— sleep is optional apparently 😭"
     },
 
@@ -1669,7 +1669,7 @@ const surprises = {
     239: {
         type: "text",
         title: "A little promise",
-        message: "I hope that even when life changes completely, we never become strangers to the versions of ourselves who once laughed over the smallest things.",
+        message: "I hope that even when life changes completely, we never become strangers to the versions of ourselves who once laughed over the smallest things and made the tiniest moments feel like a celebration.",
         signature: "— some versions are worth remembering"
     },
 
@@ -1920,14 +1920,14 @@ const surprises = {
 
     275: {
         type: "text",
-        title: "A little reminder",
+        title: "Good right now",
         message: "You don't need to know whether something will last forever to appreciate that it's good right now. Some moments are beautiful precisely because we don't know how long they'll last.",
         signature: "— appreciate the now"
     },
 
     276: {
         type: "challenge",
-        title: "The tiny celebration",
+        title: "The little reward",
         message: "Celebrate yourself today in some ridiculously small way. Favourite food, favourite song, a long shower, a nap—whatever feels like a tiny reward.",
         signature: "— today you are the occasion 🎉"
     },
@@ -1948,7 +1948,7 @@ const surprises = {
 
     279: {
         type: "challenge",
-        title: "The tiny time capsule",
+        title: "The buried note",
         message: "Write down today's date and three things that currently feel important in your life. Hide the note somewhere you'll forget about it.",
         signature: "— future-you has mail 📮"
     },
@@ -1976,7 +1976,7 @@ const surprises = {
 
     283: {
         type: "challenge",
-        title: "The old favourite",
+        title: "The forgotten favourite",
         message: "Go back to something you used to love but haven't done in ages. A song, food, movie, hobby or even a silly little habit.",
         signature: "— bring something back 🌻"
     },
@@ -2004,9 +2004,9 @@ const surprises = {
 
     287: {
         type: "question",
-        title: "Our future bucket list",
-        message: "If we could guarantee that we'd complete only one more thing from our friendship bucket list, what should it be?",
-        signature: "— choose wisely 🪣"
+        title: "Our future vacation",
+        message: "If we could make one international trip together, where would it be?",
+        signature: "— choose wisely"
     },
 
     288: {
@@ -2123,7 +2123,7 @@ const surprises = {
 
     304: {
         type: "question",
-        title: "The friendship forecast",
+        title: "Still doing this",
         message: "What do you think is the most likely completely ridiculous thing we'll still be doing years from now?",
         signature: "— predicting our future nonsense"
     },
@@ -2158,9 +2158,9 @@ const surprises = {
 
     309: {
         type: "question",
-        title: "The friendship museum",
-        message: "If you could preserve one tiny object from our friendship in a museum forever, what would you choose?",
-        signature: "— exhibit number one 🏛️"
+        title: "The friendship holiday",
+        message: "If our friendship got its own official holiday, what would we call it and how would we celebrate it every year?",
+        signature: "— mark your calendars 📅"
     },
 
     310: {
@@ -2242,16 +2242,16 @@ const surprises = {
 
     321: {
         type: "question",
-        title: "The future phone call",
-        message: "Imagine future-us randomly calling each other after years apart. What's the first thing you'd want to hear me say?",
-        signature: "— hello from the future ☎️"
+        title: "The song that'll mean this year",
+        message: "Years from now, what song do you think you'll hear and instantly be pulled back into this exact year?",
+        signature: "— future you, hit play"
     },
 
     322: {
         type: "challenge",
-        title: "The gratitude message",
-        message: "Send one person a message today telling them exactly what you appreciate about having them in your life.",
-        signature: "— don't leave good words unsaid"
+        title: "The guilt-free no",
+        message: "Say no to something today that you'd normally agree to out of guilt or habit. Notice how it feels to actually mean it.",
+        signature: "— boundaries, but make them tiny"
     },
 
     323: {
@@ -2270,7 +2270,7 @@ const surprises = {
 
     325: {
         type: "challenge",
-        title: "The tiny celebration",
+        title: "How far you've come",
         message: "Celebrate how far you've come this year. It can be ridiculously small. Just pause long enough to acknowledge it.",
         signature: "— you've come further than you think 💚"
     },
@@ -2284,7 +2284,7 @@ const surprises = {
 
     327: {
         type: "question",
-        title: "The impossible choice",
+        title: "One day or one year",
         message: "Would you rather have one perfect day with everyone you love or one perfect year where everything goes exactly according to plan?",
         signature: "— impossible questions department"
     },
@@ -2333,9 +2333,9 @@ const surprises = {
 
     334: {
         type: "question",
-        title: "The future us",
-        message: "What do you hope future-us will still find funny about present-us?",
-        signature: "— please let us remain ridiculous"
+        title: "Advice from the future",
+        message: "If future-us could send one piece of advice back to present-us, what do you think it would say?",
+        signature: "— calling from the future"
     },
 
     335: {
@@ -2389,9 +2389,9 @@ const surprises = {
 
     342: {
         type: "question",
-        title: "One thing you'd repeat",
-        message: "If you could repeat one tiny moment from this year exactly as it happened, what would you choose?",
-        signature: "— no changing the ending"
+        title: "One thing for next year",
+        message: "If you could guarantee one specific thing happens again next year, no matter what else changes, what would you pick?",
+        signature: "— locking this one in"
     },
 
     343: {
@@ -2417,7 +2417,7 @@ const surprises = {
 
     346: {
         type: "text",
-        title: "A little thank you",
+        title: "Thank you for the ordinary days",
         message: "Thank you for being part of this year. Not just the exciting parts or the funny parts, but the ordinary days too. Somehow, those are the days that make a year feel real.",
         signature: "— genuinely, thank you 💚"
     },
@@ -2431,7 +2431,7 @@ const surprises = {
 
     348: {
         type: "challenge",
-        title: "The memory sentence",
+        title: "The one thing to remember",
         message: "Write this somewhere: 'One thing I never want to forget about this year is ______.' Fill in the blank honestly.",
         signature: "— keep this one"
     },
@@ -2473,9 +2473,9 @@ const surprises = {
 
     354: {
         type: "question",
-        title: "One sentence for us",
-        message: "If you had to describe this entire year of friendship in one sentence, what would you say?",
-        signature: "— one sentence. Make it ours."
+        title: "The one photo that sums it up",
+        message: "If you had to pick one photo, real or imaginary, that sums up this entire year of us, what would be in it?",
+        signature: "— frame-worthy, probably"
     },
 
     355: {
@@ -2501,7 +2501,7 @@ const surprises = {
 
     358: {
         type: "text",
-        title: "A little perspective",
+        title: "Looking back, looking ahead",
         message: "A year ago, you couldn't have known everything that was going to happen. And that's probably true about the year ahead too. Maybe that's not something to fear. Maybe it's the exciting part.",
         signature: "— here's to the unknown ✨"
     },
