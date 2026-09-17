@@ -3,7 +3,7 @@ const surprises = {
     1: {
         type: "text",
         title: "The beginning",
-        message: "Happiest Birthday, Sapna! So... this is Day 1. There are 364 more little doors after this one. This might feel like a slightly ridiculous amount of effort for a website, but I wanted you to have a place where random thoughts, memories, questions and tiny surprises could slowly collect. So here we are. ❤️",
+        message: "Happiest Birthday, Sapna! So... this is Day 1. There are 364 more little doors after this one. This might feel like a slightly ridiculous amount of effort for a website, but I wanted you to have a place where random thoughts, memories, questions and tiny surprises could slowly collect. So here we are. 💚",
         signature: "— from someone who is very glad you're here"
     },
 
@@ -95,7 +95,7 @@ const surprises = {
         type: "text",
         title: "Two weeks",
         message: "Fourteen tiny days. That's not a huge amount of time, but it's enough to start noticing something: a year isn't really made of big events. It's made of tiny ordinary moments that somehow become ours.",
-        signature: "— Day 14 ❤️"
+        signature: "— Day 14 "
     },
 
     15: {
@@ -206,7 +206,7 @@ const surprises = {
     30: {
         type: "text",
         title: "The first little chapter",
-        message: "Thirty days. That's our first little chapter done. And if you've made it this far, congratulations: you are now officially committed to opening a suspiciously sentimental website every day. 😭❤️",
+        message: "Thirty days. That's our first little chapter done. And if you've made it this far, congratulations: you are now officially committed to opening a suspiciously sentimental website every day. 😭💚",
         signature: "— see you in the next chapter"
     },
 
@@ -277,7 +277,7 @@ const surprises = {
         type: "text",
         title: "Forty little days",
         message: "Forty days of this little experiment. Somewhere along the way, these stopped feeling like just numbered boxes and started feeling like tiny pieces of a year we're collecting.",
-        signature: "— Day 40 ❤️"
+        signature: "— Day 40 💚"
     },
 
     41: {
@@ -417,7 +417,7 @@ const surprises = {
         type: "text",
         title: "Two months of us",
         message: "Sixty days. That's two months of questions, tiny challenges, random thoughts and little reminders. And honestly, this is only the beginning. There are still 305 little doors left to open.",
-        signature: "— see you in the next chapter ❤️"
+        signature: "— see you in the next chapter 💚"
     },
 
         61: {
@@ -522,7 +522,7 @@ const surprises = {
         type: "text",
         title: "A quarter of the way",
         message: "Seventy-five days. A quarter of this ridiculous little year is already behind us. Somewhere in those days are moments we didn't know would become memories.",
-        signature: "— keep collecting them ❤️"
+        signature: "— keep collecting them 💚"
     },
 
     76: {
@@ -781,7 +781,7 @@ const surprises = {
         type: "challenge",
         title: "The old-photo challenge",
         message: "Find a really old photo of yourself and look at it without judging the person in it. That version of you was doing their best too.",
-        signature: "— be kind to past-you ❤️"
+        signature: "— be kind to past-you 💚"
     },
 
     113: {
@@ -837,7 +837,7 @@ const surprises = {
         type: "text",
         title: "Ten chapters in",
         message: "One hundred and twenty days. Ten little chapters of this year are already behind us. We've still got so much time left—and honestly, that's the nicest part.",
-        signature: "— 120 days down, so much more to come ❤️"
+        signature: "— 120 days down, so much more to come 💚"
     },
 
         121: {
@@ -977,7 +977,7 @@ const surprises = {
         type: "text",
         title: "140 days",
         message: "Another little milestone. 140 days of collecting tiny pieces of a year. Some funny, some thoughtful, some completely unnecessary—but all part of the story.",
-        signature: "— Day 140 ❤️"
+        signature: "— Day 140 💚"
     },
 
     141: {
@@ -1047,7 +1047,7 @@ const surprises = {
         type: "text",
         title: "150 days",
         message: "ONE HUNDRED AND FIFTY. We've crossed another little milestone. Somewhere between Day 1 and today, this stopped being just a collection of messages and became a tiny archive of a year.",
-        signature: "— 150 days down. ❤️"
+        signature: "— 150 days down. 💚"
     },
 
         151: {
@@ -1187,7 +1187,7 @@ const surprises = {
         type: "text",
         title: "170 days",
         message: "170 days. Somewhere in this year there are probably hundreds of tiny moments neither of us thought were important at the time. I hope some of them surprise us later.",
-        signature: "— Day 170 ❤️"
+        signature: "— Day 170 💚"
     },
 
     171: {
@@ -1257,7 +1257,7 @@ const surprises = {
         type: "text",
         title: "Half a year",
         message: "180 days. We're almost halfway through this entire year of tiny surprises. Six months ago, none of these moments had happened yet. And now they're part of the story.",
-        signature: "— 180 days of us ❤️"
+        signature: "— 180 days of us 💚"
     },
 
         181: {
@@ -1271,7 +1271,7 @@ const surprises = {
         type: "text",
         title: "The halfway point",
         message: "Half a year ago, there were 365 blank spaces waiting here. Now more than half of them have a little story attached. Funny how quickly empty pages become memories.",
-        signature: "— halfway there ❤️"
+        signature: "— halfway there 💚"
     },
 
     183: {
@@ -1467,7 +1467,7 @@ const surprises = {
         type: "text",
         title: "210 days",
         message: "We've crossed another little milestone. 210 days of a year that started with one blank page. I wonder which of these days we'll remember most when all 365 are finally behind us.",
-        signature: "— keep collecting the good ones ❤️"
+        signature: "— keep collecting the good ones 💚"
     },
 
         211: {
@@ -1502,7 +1502,7 @@ const surprises = {
         type: "text",
         title: "A little thank you",
         message: "Thank you for all the moments that weren't planned. The conversations that lasted longer than expected, the random jokes, the unnecessary updates and all the little 'look at this' moments.",
-        signature: "— those count too ❤️"
+        signature: "— those count too 💚"
     },
 
     216: {
@@ -1677,7 +1677,7 @@ const surprises = {
         type: "text",
         title: "Eight months",
         message: "240 days. Eight months of this strange little journey. We've gone from blank pages to an entire collection of thoughts, questions, memories and tiny pieces of life.",
-        signature: "— 240 days of us ❤️"
+        signature: "— 240 days of us 💚"
     },
 
         241: {
@@ -1831,7 +1831,7 @@ const surprises = {
         type: "challenge",
         title: "The tiny thank-you",
         message: "Thank yourself for something today. Not someone else. You. Pick one thing you've handled, survived, learned or improved.",
-        signature: "— give yourself some credit ❤️"
+        signature: "— give yourself some credit 💚"
     },
 
     263: {
@@ -1887,7 +1887,7 @@ const surprises = {
         type: "text",
         title: "Nine months",
         message: "270 days. Nine months. We've reached the point where this little website has witnessed almost an entire year of life. There are only 95 days left now.",
-        signature: "— 270 days of tiny memories ❤️"
+        signature: "— 270 days of tiny memories 💚"
     },
 
         271: {
@@ -1957,7 +1957,7 @@ const surprises = {
         type: "text",
         title: "280 days",
         message: "280 days. Only 85 left. We've officially entered the part of the year where the countdown starts feeling real.",
-        signature: "— Day 280 ⏳❤️"
+        signature: "— Day 280 ⏳💚"
     },
 
     281: {
@@ -2048,7 +2048,7 @@ const surprises = {
         type: "challenge",
         title: "The five things",
         message: "Write down five things you're grateful happened this year. They can be tiny. Especially tiny.",
-        signature: "— collecting the good parts ❤️"
+        signature: "— collecting the good parts 💚"
     },
 
     294: {
@@ -2097,7 +2097,7 @@ const surprises = {
         type: "text",
         title: "THREE HUNDRED",
         message: "300 days. THREE HUNDRED. Only 65 days remain. We started with a blank Day 1, and now there are hundreds of little pieces of this year sitting behind us.",
-        signature: "— 300 days of us. ❤️"
+        signature: "— 300 days of us. 💚"
     },
 
         301: {
@@ -2111,7 +2111,7 @@ const surprises = {
         type: "text",
         title: "Look how far",
         message: "Three hundred days ago, this was just an empty collection of numbers. Now each number has a little piece of a year attached to it. That's kind of amazing.",
-        signature: "— look how far we've come ❤️"
+        signature: "— look how far we've come 💚"
     },
 
     303: {
@@ -2272,7 +2272,7 @@ const surprises = {
         type: "challenge",
         title: "The tiny celebration",
         message: "Celebrate how far you've come this year. It can be ridiculously small. Just pause long enough to acknowledge it.",
-        signature: "— you've come further than you think ❤️"
+        signature: "— you've come further than you think 💚"
     },
 
     326: {
@@ -2307,7 +2307,7 @@ const surprises = {
         type: "text",
         title: "Eleven months",
         message: "330 days. Eleven months. We've collected almost an entire year of tiny moments, and now there are only 35 days left to complete the story.",
-        signature: "— 330 days of us ❤️"
+        signature: "— 330 days of us 💚"
     },
 
         331: {
@@ -2377,7 +2377,7 @@ const surprises = {
         type: "text",
         title: "340 days",
         message: "340 days. Twenty-five left. At this point, this isn't really a countdown anymore. It's the final few pages of something that took almost an entire year to write.",
-        signature: "— Day 340 ❤️"
+        signature: "— Day 340 💚"
     },
 
     341: {
@@ -2419,7 +2419,7 @@ const surprises = {
         type: "text",
         title: "A little thank you",
         message: "Thank you for being part of this year. Not just the exciting parts or the funny parts, but the ordinary days too. Somehow, those are the days that make a year feel real.",
-        signature: "— genuinely, thank you ❤️"
+        signature: "— genuinely, thank you 💚"
     },
 
     347: {
@@ -2447,7 +2447,7 @@ const surprises = {
         type: "text",
         title: "THREE HUNDRED AND FIFTY",
         message: "350 days. Fifteen days left. That's it. Fifteen little doors remain after today. I'm not sure whether to celebrate or panic.",
-        signature: "— Day 350 🥹❤️"
+        signature: "— Day 350 🥹💚"
     },
 
     351: {
@@ -2517,7 +2517,7 @@ const surprises = {
         type: "text",
         title: "One year",
         message: "360 days. One year, almost exactly. Five days ago this still felt like a huge collection of numbers. Now we're five doors away from the final one.",
-        signature: "— 360 days of us. ❤️"
+        signature: "— 360 days of us. 💚"
     },
 
         361: {
@@ -2531,7 +2531,7 @@ const surprises = {
         type: "question",
         title: "Keep this one",
         message: "When you look back at this year someday, what is the one feeling you hope comes back when you remember it?",
-        signature: "— not a memory. A feeling. ❤️"
+        signature: "— not a memory. A feeling. 💚"
     },
 
     363: {
@@ -2551,7 +2551,7 @@ const surprises = {
     365: {
         type: "text",
         title: "365 DAYS OF US",
-        message: "We made it.\n\n365 days. 365 little doors. Hundreds of thoughts, questions, challenges, memories and completely unnecessary pieces of nonsense.\n\nWhen Day 1 opened, this was just an idea. Now it's an entire year sitting here behind us.\n\nAnd maybe that's what I wanted you to have more than anything: proof that ordinary days can become something beautiful when you actually stop to notice them.\n\nI hope you laughed at some of these. I hope a few made you think. I hope some surprised you. I hope some became memories of their own.\n\nAnd whenever you look back at this year, I hope you don't just remember the big things. Remember the random conversations. The stupid jokes. The little plans. The songs. The ordinary days. The moments neither of us realised we'd remember.\n\nBecause those are the pieces that make a year ours.\n\nThank you for being part of mine.\n\nHere's to everything we've already lived, everything we haven't yet imagined, and all the little moments waiting somewhere ahead.\n\nThe year ends here.\n\nThe memories don't. ❤️",
+        message: "We made it.\n\n365 days. 365 little doors. Hundreds of thoughts, questions, challenges, memories and completely unnecessary pieces of nonsense.\n\nWhen Day 1 opened, this was just an idea. Now it's an entire year sitting here behind us.\n\nAnd maybe that's what I wanted you to have more than anything: proof that ordinary days can become something beautiful when you actually stop to notice them.\n\nI hope you laughed at some of these. I hope a few made you think. I hope some surprised you. I hope some became memories of their own.\n\nAnd whenever you look back at this year, I hope you don't just remember the big things. Remember the random conversations. The stupid jokes. The little plans. The songs. The ordinary days. The moments neither of us realised we'd remember.\n\nBecause those are the pieces that make a year ours.\n\nThank you for being part of mine.\n\nHere's to everything we've already lived, everything we haven't yet imagined, and all the little moments waiting somewhere ahead.\n\nThe year ends here.\n\nThe memories don't. 💚",
         signature: "— here's to us, wherever the next chapter takes us ✨"
     },
 
@@ -2561,7 +2561,7 @@ const letters = {
 
     sad: {
         title: "You're feeling sad",
-        message: "You don't have to be okay every second of every day. Some days are heavy, and that's okay. Take your time. Be gentle with yourself. And remember that one difficult day doesn't define your whole story. ❤️"
+        message: "You don't have to be okay every second of every day. Some days are heavy, and that's okay. Take your time. Be gentle with yourself. And remember that one difficult day doesn't define your whole story. 💚"
     },
 
     happy: {
@@ -2571,12 +2571,12 @@ const letters = {
 
     angry: {
         title: "You're angry",
-        message: "Okay. First: breathe. 😂 You are allowed to be angry. Just don't let one moment make decisions for you that tomorrow-you will have to deal with. Take your time, cool down, then decide what deserves your energy."
+        message: "Okay. First: breathe. 😂 You are allowed to be angry. Just don't let one moment make decisions, the consequences of which you will have to deal with tomorrow. Take your time, cool down, then decide what deserves your energy."
     },
 
     missing: {
         title: "You miss me",
-        message: "Well... here I am. Not physically, obviously, because apparently technology still hasn't figured that one out. But somewhere, at some point today, I probably thought about you too. 🫶"
+        message: "Well...here I am. Not physically, obviously, because apparently technology still hasn't figured that one out. Also, I miss you more! 🫶"
     },
 
     celebrating: {
