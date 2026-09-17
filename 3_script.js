@@ -28,19 +28,6 @@ const todayDescription = document.getElementById("todayDescription");
 const todayButton = document.getElementById("todayButton");
 
 // =========================
-// UNSAVED CHANGES CONFIRMATION
-// =========================
-
-const unsavedChangesModal =
-    document.getElementById("unsavedChangesModal");
-
-const keepEditingButton =
-    document.getElementById("keepEditingButton");
-
-const leaveWithoutSavingButton =
-    document.getElementById("leaveWithoutSavingButton");
-
-// =========================
 // OPEN WHEN ELEMENTS
 // =========================
 
@@ -636,11 +623,6 @@ function openSurprise(dayNumber) {
     recordedVoiceBlob2 = null;
     recordedVoiceBlob3 = null;
 
-    // Opening a day (whether blank or with a
-    // saved memory) always starts out "clean".
-
-    isMemoryDirty = false;
-
 
     // =========================
     // RESET TEXT
@@ -1059,32 +1041,13 @@ function openSurprise(dayNumber) {
 // CLOSE SURPRISE
 // =========================
 
-function attemptCloseSurprise() {
-
-    // If the daily card has unsaved changes,
-    // ask before actually closing it.
-
-    if (isMemoryDirty) {
-
-        unsavedChangesModal.classList.add(
-            "active"
-        );
-
-        return;
-
-    }
-
-    surpriseModal.classList.remove(
-        "active"
-    );
-
-}
-
 closeSurprise.addEventListener(
     "click",
     function () {
 
-        attemptCloseSurprise();
+        surpriseModal.classList.remove(
+            "active"
+        );
 
     }
 );
@@ -1102,50 +1065,11 @@ surpriseModal.addEventListener(
             surpriseModal
         ) {
 
-            attemptCloseSurprise();
+            surpriseModal.classList.remove(
+                "active"
+            );
 
         }
-
-    }
-);
-
-// =========================
-// UNSAVED CHANGES: KEEP EDITING
-// =========================
-
-keepEditingButton.addEventListener(
-    "click",
-    function () {
-
-        unsavedChangesModal.classList.remove(
-            "active"
-        );
-
-    }
-);
-
-// =========================
-// UNSAVED CHANGES: LEAVE WITHOUT SAVING
-// =========================
-
-leaveWithoutSavingButton.addEventListener(
-    "click",
-    function () {
-
-        // Discard the in-progress edits. The next
-        // time this day is opened, openSurprise()
-        // reloads it fresh from the database, so
-        // nothing further needs to be reset here.
-
-        isMemoryDirty = false;
-
-        unsavedChangesModal.classList.remove(
-            "active"
-        );
-
-        surpriseModal.classList.remove(
-            "active"
-        );
 
     }
 );
@@ -1339,8 +1263,6 @@ dailyPhoto.addEventListener(
             // so it should replace the old photo.
             photoRemoved = false;
 
-            isMemoryDirty = true;
-
             photoName.textContent =
                 "📎 " +
                 file.name;
@@ -1388,8 +1310,6 @@ dailyPhoto2.addEventListener(
                 dailyPhoto2.files[0];
 
             photoRemoved2 = false;
-
-            isMemoryDirty = true;
 
             photoName2.textContent =
                 "📎 " +
@@ -1439,8 +1359,6 @@ dailyPhoto3.addEventListener(
 
             photoRemoved3 = false;
 
-            isMemoryDirty = true;
-
             photoName3.textContent =
                 "📎 " +
                 file.name;
@@ -1472,19 +1390,6 @@ dailyPhoto3.addEventListener(
             );
 
         }
-
-    }
-);
-
-// =========================
-// TRACK TEXT EDITS
-// =========================
-
-dailyResponse.addEventListener(
-    "input",
-    function () {
-
-        isMemoryDirty = true;
 
     }
 );
@@ -1522,13 +1427,6 @@ let existingVoiceNote3 = null;
 
 let photoRemoved3 = false;
 let voiceRemoved3 = false;
-
-// Tracks whether the currently open daily
-// card has unsaved changes (text, photos,
-// or voice notes added/removed since it
-// was opened or last saved).
-
-let isMemoryDirty = false;
 
 // let recordedVoiceBlob = null;
 
@@ -2176,14 +2074,6 @@ saveMemory.addEventListener(
 
                         dailyPhoto3.value =
                             "";
-
-
-                        // The memory now matches what is
-                        // saved in the database, so there
-                        // are no unsaved changes left.
-
-                        isMemoryDirty =
-                            false;
 
 
                         // =========================
@@ -3343,21 +3233,40 @@ soundtrackList.addEventListener(
                 event.target.dataset.id
             );
 
-        deleteTarget =
-            "song";
+        const confirmed =
+            confirm(
+                "Delete this song from Our Soundtrack?"
+            );
 
-        deleteTargetId =
-            songId;
+        if (!confirmed) {
+            return;
+        }
 
-        deleteConfirmTitle.textContent =
-            "Delete this song?";
+        const transaction =
+            memoryDB.transaction(
+                ["songs"],
+                "readwrite"
+            );
 
-        deleteConfirmMessage.textContent =
-            "This song will be removed from Our Soundtrack. This can't be undone.";
+        const store =
+            transaction.objectStore(
+                "songs"
+            );
 
-        deleteConfirmModal.classList.add(
-            "active"
-        );
+        store.delete(songId);
+
+        transaction.oncomplete =
+            function () {
+
+                console.log(
+                    "Song deleted from Our Soundtrack."
+                );
+
+                loadSoundtrack();
+                updateYearStatistics();
+                updateFinaleStats();
+
+            };
 
     }
 );
@@ -3850,21 +3759,36 @@ bucketList.addEventListener(
             )
         ) {
 
-            deleteTarget =
-                "bucket";
+            const confirmed =
+                confirm(
+                    "Remove this from Our Little Bucket List?"
+                );
 
-            deleteTargetId =
-                itemId;
+            if (!confirmed) {
+                return;
+            }
 
-            deleteConfirmTitle.textContent =
-                "Remove this from the list?";
+            const transaction =
+                memoryDB.transaction(
+                    ["bucketList"],
+                    "readwrite"
+                );
 
-            deleteConfirmMessage.textContent =
-                "This will remove the item from Our Little Bucket List. This can't be undone.";
+            const store =
+                transaction.objectStore(
+                    "bucketList"
+                );
 
-            deleteConfirmModal.classList.add(
-                "active"
-            );
+            store.delete(itemId);
+
+            transaction.oncomplete =
+                function () {
+
+                    loadBucketList();
+                    updateYearStatistics();
+                    updateFinaleStats();
+
+                };
 
             return;
 
@@ -5676,8 +5600,6 @@ recordVoice.addEventListener(
                     targetRemoveButton.hidden =
                         false;
 
-                    isMemoryDirty = true;
-
 
                     recordingStatus.hidden =
                         true;
@@ -5879,7 +5801,6 @@ const confirmDelete =
     );
 
 let deleteTarget = null;
-let deleteTargetId = null;
 
 // =========================
 // LOCAL BACKUP RESTORE
@@ -6070,9 +5991,6 @@ cancelDelete.addEventListener(
         deleteTarget =
             null;
 
-        deleteTargetId =
-            null;
-
         deleteConfirmModal.classList.remove(
             "active"
         );
@@ -6088,29 +6006,6 @@ cancelDelete.addEventListener(
 confirmDelete.addEventListener(
     "click",
     function () {
-
-        // Removing a photo or voice note from the
-        // daily card is an edit — it only becomes
-        // permanent once the memory is saved.
-
-        const memoryFormTargets = [
-            "photo",
-            "photo2",
-            "photo3",
-            "voice",
-            "voice2",
-            "voice3"
-        ];
-
-        if (
-            memoryFormTargets.includes(
-                deleteTarget
-            )
-        ) {
-
-            isMemoryDirty = true;
-
-        }
 
         if (
             deleteTarget ===
@@ -6279,90 +6174,7 @@ confirmDelete.addEventListener(
         }
 
 
-        // =========================
-        // DELETE SONG (IMMEDIATE)
-        // =========================
-
-        if (
-            deleteTarget ===
-            "song"
-        ) {
-
-            const songTransaction =
-                memoryDB.transaction(
-                    ["songs"],
-                    "readwrite"
-                );
-
-            const songStore =
-                songTransaction.objectStore(
-                    "songs"
-                );
-
-            songStore.delete(
-                deleteTargetId
-            );
-
-            songTransaction.oncomplete =
-                function () {
-
-                    console.log(
-                        "Song deleted from Our Soundtrack."
-                    );
-
-                    loadSoundtrack();
-                    updateYearStatistics();
-                    updateFinaleStats();
-
-                };
-
-        }
-
-
-        // =========================
-        // DELETE BUCKET ITEM (IMMEDIATE)
-        // =========================
-
-        if (
-            deleteTarget ===
-            "bucket"
-        ) {
-
-            const bucketDeleteTransaction =
-                memoryDB.transaction(
-                    ["bucketList"],
-                    "readwrite"
-                );
-
-            const bucketDeleteStore =
-                bucketDeleteTransaction.objectStore(
-                    "bucketList"
-                );
-
-            bucketDeleteStore.delete(
-                deleteTargetId
-            );
-
-            bucketDeleteTransaction.oncomplete =
-                function () {
-
-                    console.log(
-                        "Item removed from Our Little Bucket List."
-                    );
-
-                    loadBucketList();
-                    updateYearStatistics();
-                    updateFinaleStats();
-
-                };
-
-        }
-
-
         deleteTarget =
-            null;
-
-        deleteTargetId =
             null;
 
         deleteConfirmModal.classList.remove(
