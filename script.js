@@ -295,7 +295,7 @@ function createDays() {
         "Another month of you ✨",
         "Summer days & silly moments ☀️",
         "We're getting closer... 🫶",
-        "One beautiful year, almost complete 💜",
+        "One beautiful year, almost complete 💚",
         "Until we meet again on another birthday 🎂"
 
     ];
