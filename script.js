@@ -65,7 +65,7 @@ const closeSpecialDay =
 const FIRST_VISIT_POPUP = {
     icon: "🎂",
     color: "#ffd28a",
-    title: "Happy (slightly late) birthday",
+    title: "Happy (slightly late) Birthday!",
     message:
         "Your birthday was yesterday — and this is kind of the real gift. Not a single day, but 365 of them, one at a time, starting right now. Consider this the actual start of your birthday year. Happy birthday, Sapna. Let's begin."
 };
