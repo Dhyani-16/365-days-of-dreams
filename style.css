@@ -5291,3 +5291,224 @@ button:focus-visible {
     }
 
 }
+
+
+/* =========================
+   SPECIAL DAY POPUP
+========================= */
+
+.special-day-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+    box-sizing: border-box;
+
+    background: rgba(3, 5, 15, 0.8);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 700;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.special-day-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.special-day-card {
+    position: relative;
+
+    width: min(380px, 100%);
+
+    padding: 42px 28px 32px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(46, 34, 82, 0.97),
+            rgba(12, 10, 30, 0.98)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        0 0 70px var(--special-glow-color, rgba(255, 210, 130, 0.18));
+
+    transform: scale(0.9) translateY(10px);
+
+    transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.4s ease;
+}
+
+.special-day-modal.active .special-day-card {
+    transform: scale(1) translateY(0);
+}
+
+.special-day-glow {
+    position: absolute;
+    top: -55%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--special-glow-color, rgba(255, 210, 130, 0.35)) 0%,
+            transparent 70%
+        );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.special-day-icon {
+    position: relative;
+    z-index: 1;
+
+    font-size: 40px;
+    margin-bottom: 14px;
+
+    animation: specialIconPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes specialIconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.14);
+    }
+
+}
+
+.flash-font {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 14px;
+
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            var(--special-glow-color, #ffd28a),
+            #ffffff
+        );
+
+    background-size: 220% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 26px var(--special-glow-color, rgba(255, 210, 130, 0.4));
+
+    animation: flashFontShimmer 2.8s linear infinite;
+}
+
+@keyframes flashFontShimmer {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 220% center;
+    }
+
+}
+
+.special-day-card p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 auto 28px;
+
+    max-width: 300px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#closeSpecialDay {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 0;
+    padding: 12px 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+#closeSpecialDay:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 30px var(--special-glow-color, rgba(255, 255, 255, 0.15));
+}
+
+@media (max-width: 600px) {
+
+    .special-day-card {
+        padding: 36px 20px 26px;
+    }
+
+    .flash-font {
+        font-size: 20px;
+    }
+
+}

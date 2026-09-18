@@ -41,6 +41,308 @@ const leaveWithoutSavingButton =
     document.getElementById("leaveWithoutSavingButton");
 
 // =========================
+// SPECIAL DAY POPUP
+// =========================
+
+const specialDayModal =
+    document.getElementById("specialDayModal");
+
+const specialDayIcon =
+    document.getElementById("specialDayIcon");
+
+const specialDayTitle =
+    document.getElementById("specialDayTitle");
+
+const specialDayMessage =
+    document.getElementById("specialDayMessage");
+
+const closeSpecialDay =
+    document.getElementById("closeSpecialDay");
+
+// Shown once, the very first time she ever opens
+// the site, regardless of what today's date is.
+
+const FIRST_VISIT_POPUP = {
+    icon: "🎂",
+    color: "#ffd28a",
+    title: "Happy (slightly late) birthday",
+    message:
+        "Your birthday was yesterday — and this is kind of the real gift. Not a single day, but 365 of them, one at a time, starting right now. Consider this the actual start of your birthday year. Happy birthday, Sapna. Let's begin."
+};
+
+// Shown on specific calendar dates as they come up
+// over the course of the year. Dates are in
+// "YYYY-MM-DD" format, matched against the local date.
+
+const SPECIAL_DAY_POPUPS = [
+    {
+        date: "2026-10-11",
+        icon: "✨",
+        color: "#c9a7ff",
+        title: "Nine nights begin",
+        message:
+            "Nine nights of dandiya sticks, way too much garba, and probably losing your voice by day 3. Here's to Navratri — dance like nobody's filming (even though someone definitely is)."
+    },
+    {
+        date: "2026-10-24",
+        icon: "📖",
+        color: "#9fd8ff",
+        title: "Tomorrow's the day",
+        message:
+            "Tomorrow's the exam. Today, just breathe. You've put in the work — trust it. Whatever happens, I'm proud of you for showing up for this. Go get some rest. You've got this."
+    },
+    {
+        date: "2026-11-08",
+        icon: "🪔",
+        color: "#ffd28a",
+        title: "Happy Diwali",
+        message:
+            "May your year ahead have way more light than darkness, more sweets than stress, and at least one firecracker mishap you'll laugh about later. Happy Diwali, Sapna."
+    },
+    {
+        date: "2026-12-25",
+        icon: "🎄",
+        color: "#8fdba0",
+        title: "Merry Christmas",
+        message:
+            "Hope today is slow mornings, good food, and people who make you feel warm inside. Merry Christmas — sending you all of it from here."
+    },
+    {
+        date: "2026-12-31",
+        icon: "🥂",
+        color: "#ffd28a",
+        title: "One year left in the tank",
+        message:
+            "Whatever this year gave you — good, bad, weird — it's almost done. Get ready to say goodbye to it properly tonight."
+    },
+    {
+        date: "2027-01-01",
+        icon: "🎇",
+        color: "#ffe08a",
+        title: "New year, same us",
+        message:
+            "Happy New Year. Whatever this year holds, I hope it's kind to you. And whatever it isn't, I hope I'm still around for it."
+    },
+    {
+        date: "2027-01-14",
+        icon: "🪁",
+        color: "#9fd8ff",
+        title: "Kite season",
+        message:
+            "May your kites fly higher than everyone else's on the terrace, and may absolutely no one cut your string today. Happy Uttarayan!"
+    },
+    {
+        date: "2027-01-26",
+        icon: "🇮🇳",
+        color: "#ff9a56",
+        title: "Happy Republic Day",
+        message:
+            "Here's to the country that raised us, fed us way too much good food, and gave us a million reasons to complain and love it anyway. Happy Republic Day."
+    },
+    {
+        date: "2027-02-14",
+        icon: "💌",
+        color: "#ff8fab",
+        title: "Love comes in many forms",
+        message:
+            "Today's usually about romance, but honestly? This kind of love — the kind that shows up, remembers your birthday, and puts up with your nonsense for years — deserves a Valentine's Day too. Happy Valentine's, Sapna."
+    },
+    {
+        date: "2027-02-17",
+        icon: "🎈",
+        color: "#7fe0c9",
+        title: "Happy half(ish) birthday",
+        message:
+            "Not your real birthday, but somehow this date decided it deserved a celebration too. So: happy pseudo birthday. No cake required, but I wouldn't say no either."
+    },
+    {
+        date: "2027-03-21",
+        icon: "🔥",
+        color: "#ff7a45",
+        title: "Burn it down",
+        message:
+            "Tonight's for burning away whatever this year left you carrying — old stress, old versions of you that didn't work out. Let it go, literally."
+    },
+    {
+        date: "2027-03-22",
+        icon: "🎨",
+        color: "#ff8fd1",
+        title: "Happy Holi",
+        message:
+            "May today be loud, colorful, and slightly chaotic in the best way. Go get covered in colors you'll still find in your ears three days later."
+    },
+    {
+        date: "2027-05-23",
+        icon: "📚",
+        color: "#9fd8ff",
+        title: "Today's the day",
+        message:
+            "All those months of prep come down to today. However it goes, I already know how hard you worked for this. Go in steady. I'm rooting for you."
+    },
+    {
+        date: "2027-06-01",
+        icon: "🌱",
+        color: "#8fdba0",
+        title: "Somewhere around now",
+        message:
+            "We don't know the exact day anymore, but sometime around now, a year ago, you went from \"someone I know\" to \"someone I can't imagine not knowing.\" Close enough counts. Happy friend-iversary, roughly."
+    },
+    {
+        date: "2027-08-01",
+        icon: "💛",
+        color: "#ffd28a",
+        title: "The whole point of this website",
+        message:
+            "Every single day of this entire project has secretly been about this one. Happy Friendship Day, Sapna. Thank you for being the reason any of this existed."
+    },
+    {
+        date: "2027-08-15",
+        icon: "🇮🇳",
+        color: "#ff9a56",
+        title: "Happy Independence Day",
+        message:
+            "Freedom looks different for everyone. For us, maybe it's just the freedom to be exactly as weird as we actually are around each other."
+    },
+    {
+        date: "2027-08-17",
+        icon: "🧵",
+        color: "#ff8f70",
+        title: "Not blood, still family",
+        message:
+            "No thread today, no ceremony — but if there were, you'd absolutely be getting one. Some bonds don't need a blood relation to count. Happy Rakshabandhan."
+    },
+    {
+        date: "2027-09-17",
+        icon: "🎂",
+        color: "#ffd28a",
+        title: "One year, exactly.",
+        message:
+            "A year ago today, this whole thing began. Now it ends the same way it started — with your birthday, and with me still incredibly glad you exist. Happy birthday, Sapna. This was always for you."
+    }
+];
+
+function getTodayDateString() {
+
+    const now = new Date();
+
+    const year = now.getFullYear();
+
+    const month =
+        String(now.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(now.getDate()).padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+
+}
+
+function showSpecialDayPopup(data, shownFlagKey) {
+
+    specialDayIcon.textContent = data.icon;
+    specialDayTitle.textContent = data.title;
+    specialDayMessage.textContent = data.message;
+
+    specialDayModal.style.setProperty(
+        "--special-glow-color",
+        data.color
+    );
+
+    specialDayModal.classList.add("active");
+
+    try {
+
+        localStorage.setItem(shownFlagKey, "true");
+
+    } catch (error) {
+
+        // If localStorage isn't available for some
+        // reason, the popup can still show — it just
+        // might repeat on a refresh. Not worth blocking
+        // the popup itself over.
+
+    }
+
+}
+
+function checkForSpecialDay() {
+
+    let hasVisitedBefore = null;
+
+    try {
+
+        hasVisitedBefore =
+            localStorage.getItem("hasVisitedSite");
+
+    } catch (error) {
+
+        hasVisitedBefore = "true";
+
+    }
+
+    if (!hasVisitedBefore) {
+
+        showSpecialDayPopup(
+            FIRST_VISIT_POPUP,
+            "hasVisitedSite"
+        );
+
+        return;
+
+    }
+
+    const todayString = getTodayDateString();
+
+    const shownFlagKey =
+        "specialDayShown_" + todayString;
+
+    let alreadyShownToday = null;
+
+    try {
+
+        alreadyShownToday =
+            localStorage.getItem(shownFlagKey);
+
+    } catch (error) {
+
+        alreadyShownToday = null;
+
+    }
+
+    if (alreadyShownToday) {
+        return;
+    }
+
+    const todaysSpecialDay =
+        SPECIAL_DAY_POPUPS.find(function (entry) {
+
+            return entry.date === todayString;
+
+        });
+
+    if (todaysSpecialDay) {
+
+        showSpecialDayPopup(
+            todaysSpecialDay,
+            shownFlagKey
+        );
+
+    }
+
+}
+
+closeSpecialDay.addEventListener(
+    "click",
+    function () {
+
+        specialDayModal.classList.remove("active");
+
+    }
+);
+
+checkForSpecialDay();
+
+// =========================
 // OPEN WHEN ELEMENTS
 // =========================
 

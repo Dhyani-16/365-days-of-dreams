@@ -2048,7 +2048,7 @@ request.onsuccess =
 
 
                 backupStatus.textContent =
-                    "✓ Our local backup has been restored successfully. ❤️";
+                    "✓ Your local backup has been restored successfully. ❤️";
 
                 backupStatus.classList.add(
                     "show"
@@ -2436,7 +2436,7 @@ saveSong.addEventListener(
             function () {
 
                 console.log(
-                    "Song added to Our Soundtrack 🎵"
+                    "Song added to Your Soundtrack 🎵"
                 );
 
                 songTitle.value =
@@ -2514,7 +2514,7 @@ function loadSoundtrack() {
                         </div>
 
                         <h3>
-                            Our first song is waiting...
+                            Your first song is waiting...
                         </h3>
 
                         <p>
@@ -2646,7 +2646,7 @@ soundtrackList.addEventListener(
 
         const confirmed =
             confirm(
-                "Delete this song from Our Soundtrack?"
+                "Delete this song from Your Soundtrack?"
             );
 
         if (!confirmed) {
@@ -2670,7 +2670,7 @@ soundtrackList.addEventListener(
             function () {
 
                 console.log(
-                    "Song deleted from Our Soundtrack."
+                    "Song deleted from Your Soundtrack."
                 );
 
                 loadSoundtrack();
@@ -3172,7 +3172,7 @@ bucketList.addEventListener(
 
             const confirmed =
                 confirm(
-                    "Remove this from Our Little Bucket List?"
+                    "Remove this from Your Little Bucket List?"
                 );
 
             if (!confirmed) {
@@ -3831,7 +3831,7 @@ backupButton.addEventListener(
             );
 
             backupStatus.textContent =
-                "✓ Our year has been backed up safely. ❤️";
+                "✓ Your year has been backed up safely. ❤️";
 
             backupStatus.classList.add(
                 "show"
@@ -4050,7 +4050,7 @@ restoreFile.addEventListener(
                     function () {
 
                         backupStatus.textContent =
-                            "✓ Our year has been restored successfully. ❤️";
+                            "✓ Your year has been restored successfully. ❤️";
 
                         backupStatus.classList.add(
                             "show"
